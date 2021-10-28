@@ -17,6 +17,8 @@ class DontFall:
         self.down = False
         self.up = False
         self.locked = False
+
+        #tää vaihtaa scenen tai lisää tekstin et on voittanut pelin
         self.done = False
 
         self.x = 313
@@ -35,11 +37,30 @@ class DontFall:
         self.normal_cube_down = pygame.image.load("normal cube down.png")
         self.normal_cube_down2 = pygame.image.load("normal cube down2.png")
 
-    #def cubes(self):
+    def won_the_game(self):
+        print("you won")
 
-        #for cube in self.cube_info:
-            #if self.ball_on_cube.get_height == cube[0] and self.ball_on_cube.get_width == cube[1]:
-                #self.display.blit(self.normal_cube_down2, (cube[0], cube[1]))
+    #tee kuva laskuista?
+    #tai sit tee display kirjoitusta
+    #vähänniinku rahasateessa
+    # ja vaihtuu vasta, kun on ratkaistu
+    def showing_calculations(self):
+        #print(self.calculations[randint(0,8)])
+        self.display.blit(self.normal_cube_down, (100, 75))
+
+    #selvitä miks tää laittaa ruutuja uusiin kohtiin
+    #pitäis kans jättää ratkaistut ruudut alas
+    def cubes(self):
+
+        for cube in self.cube_info:
+            #print(self.x)
+            #print(self.y)
+            on_cube_x =  self.cube_info[cube][0] >= self.x-self.ball_on_cube.get_width() and self.cube_info[cube][0] <= self.x+self.ball_on_cube.get_width()
+            on_cube_y = self.cube_info[cube][1] >= self.y-self.ball_on_cube.get_height() and self.cube_info[cube][1] <= self.y+self.ball_on_cube.get_height()
+
+            if on_cube_x and on_cube_y:
+                self.display.blit(self.normal_cube_down2, (self.cube_info[cube][0], self.cube_info[cube][1]))
+                #self.display.blit(self.normal_cube_down2, (0, 0))
 
     #def character(self):
 
@@ -50,13 +71,14 @@ class DontFall:
             self.draw_the_game()
             self.analyse_events()
             kello.tick(60)
+            if self.done:
+                self.won_the_game()
+                break
 
     def analyse_events(self):
         #self.character()
- 
+
         for event in pygame.event.get():
-            #tää pitäs saada toimimaan
-            #self.cubes()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
                     self.left = True
@@ -187,7 +209,6 @@ class DontFall:
                         self.y -= 100
                         self.locked = True
 
-    
     def draw_the_game(self):
 
         self.cube_info = {}
@@ -204,7 +225,7 @@ class DontFall:
         self.secondrow_3 = self.display.blit(self.normal_cube2, (300, 250))
         self.cube_info["secondrow_1"] = (self.secondrow_1.y, self.secondrow_1.x)
         self.cube_info["secondrow_2"] = (self.secondrow_2.y, self.secondrow_2.x)
-        self.cube_info["secondrow_2"] = (self.secondrow_3.y, self.secondrow_3.x)
+        self.cube_info["secondrow_3"] = (self.secondrow_3.y, self.secondrow_3.x)
 
         #3alin
         self.thirdrow_1 = self.display.blit(self.normal_cube2, (400, 350))
@@ -224,19 +245,11 @@ class DontFall:
         self.fifthrow_1 = self.display.blit(self.normal_cube2, (300, 550))
         self.cube_info["fifthrow_1"] = (self.fifthrow_1.y, self.fifthrow_1.x)
 
-        #tää on kesken
-        #idea olis saada uusi ruutu aiemman päälle silloin kun pallo on ruudun päällä
-        #sun pitää vaan pikkasen kasvattaa noita määriä
-        # eli ei x ja y vaan ne ja vähän lisää
-        for cube in self.cube_info:
-            print(self.x)
-            #print(self.y)
-            on_cube_x =  self.cube_info[cube][0] >= self.x-self.ball_on_cube.get_width() and self.cube_info[cube][0] <= self.x+self.ball_on_cube.get_width()
-            on_cube_y = self.cube_info[cube][1] >= self.y-self.ball_on_cube.get_height() and self.cube_info[cube][1] <= self.y+self.ball_on_cube.get_height()
+        #vielä testaamassa
+        self.cubes()
 
-            if on_cube_x and on_cube_y:
-                self.display.blit(self.normal_cube_down2, (self.cube_info[cube][0], self.cube_info[cube][1]))
-                #self.display.blit(self.normal_cube_down2, (0, 0))
+        #tääkin alussa
+        self.showing_calculations()
 
         #testi
         self.display.blit(self.ball_on_cube, (self.x, self.y))
