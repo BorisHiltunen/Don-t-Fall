@@ -202,7 +202,7 @@ class DontFall:
         self.secondrow_1 = self.display.blit(self.normal_cube2, (400, 250))
         self.secondrow_2 = self.display.blit(self.normal_cube2, (200, 250))
         self.secondrow_3 = self.display.blit(self.normal_cube2, (300, 250))
-        self.cube_info["secondrow_1"] = (self.secondrow_1.y, self.secondrow_1.x)
+        self.cube_info["secondrow_1"] = (self.firstrow_1.y, self.firstrow_1.x)
         self.cube_info["secondrow_2"] = (self.secondrow_2.y, self.secondrow_2.x)
         self.cube_info["secondrow_2"] = (self.secondrow_3.y, self.secondrow_3.x)
 
@@ -210,19 +210,19 @@ class DontFall:
         self.thirdrow_1 = self.display.blit(self.normal_cube2, (400, 350))
         self.thirdrow_2 = self.display.blit(self.normal_cube2, (200, 350))
         self.thirdrow_3 = self.display.blit(self.normal_cube2, (300, 350))
-        self.cube_info["thirdrow_1"] = (self.thirdrow_1.y, self.thirdrow_1.x)
+        self.cube_info["thirdrow_1"] = (self.firstrow_1.y, self.firstrow_1.x)
         self.cube_info["thirdrow_2"] = (self.thirdrow_2.y, self.thirdrow_2.x)
         self.cube_info["thirdrow_3"] = (self.thirdrow_3.y, self.thirdrow_3.x)
         #2alin
         self.fourthrow_1 = self.display.blit(self.normal_cube2, (400, 450))
         self.fourthrow_2 = self.display.blit(self.normal_cube2, (200, 450))
         self.fourthrow_3 = self.display.blit(self.normal_cube2, (300, 450))
-        self.cube_info["fourthrow_1"] = (self.fourthrow_1.y, self.fourthrow_1.x)
+        self.cube_info["fourthrow_1"] = (self.firstrow_1.y, self.firstrow_1.x)
         self.cube_info["fourthrow_2"] = (self.fourthrow_2.y, self.fourthrow_2.x)
         self.cube_info["fourthrow_3"] = (self.fourthrow_3.y, self.fourthrow_3.x)
         #alin
         self.fifthrow_1 = self.display.blit(self.normal_cube2, (300, 550))
-        self.cube_info["fifthrow_1"] = (self.fifthrow_1.y, self.fifthrow_1.x)
+        self.cube_info["fifthrow_1"] = (self.firstrow_1.y, self.firstrow_1.x)
 
         #tää on kesken
         #idea olis saada uusi ruutu aiemman päälle silloin kun pallo on ruudun päällä
@@ -231,12 +231,9 @@ class DontFall:
         for cube in self.cube_info:
             print(self.x)
             #print(self.y)
-            on_cube_x =  self.cube_info[cube][0] >= self.x-self.ball_on_cube.get_width() and self.cube_info[cube][0] <= self.x+self.ball_on_cube.get_width()
-            on_cube_y = self.cube_info[cube][1] >= self.y-self.ball_on_cube.get_height() and self.cube_info[cube][1] <= self.y+self.ball_on_cube.get_height()
-
-            if on_cube_x and on_cube_y:
+            if self.y == self.cube_info[cube][0] and self.x == self.cube_info[cube][1]:
+                print("toimii")
                 self.display.blit(self.normal_cube_down2, (self.cube_info[cube][0], self.cube_info[cube][1]))
-                #self.display.blit(self.normal_cube_down2, (0, 0))
 
         #testi
         self.display.blit(self.ball_on_cube, (self.x, self.y))
