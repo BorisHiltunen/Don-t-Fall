@@ -2,32 +2,44 @@ import pygame
 from random import randint
 
 class DontFall:
+    #Initializing necessary attributes
     def __init__(self):
         pygame.init()
 
+        #This downloads pictures
         self.download_pictures()
 
+        #here are calculations in the correct order
         self.calculations = ["0 + 0", "0 + 1", "1 + 0", "0 + 2", "2 + 0", "1 + 1", "0 + 3", "1 + 2", "2 + 1", "3 + 0"]
 
+        #Here we specify how large game window we want
         self.height = 700
         self.width = 640
 
+        #Here are boolians that show which way you're going
         self.right = False
         self.left = False
         self.down = False
         self.up = False
+
+        #This locks movement to just move one block at a time
         self.locked = False
 
-        #tää vaihtaa scenen tai lisää tekstin et on voittanut pelin
+        #This changes the scene or adds a text that shows that you have won the game
         self.done = False
 
+        #Here are the players coordinates
         self.x = 313
         self.y = 563
  
+        #Here we initiate the window
         self.display = pygame.display.set_mode((self.width, self.height))
  
+        #Here we set the caption
         pygame.display.set_caption("Don't Fall")
  
+        #This is a function that loops over and over
+        #Thus making the game flow
         self.loop()
 
     def download_pictures(self):
@@ -42,7 +54,7 @@ class DontFall:
         self.normal3 = pygame.image.load("3.png")
 
     def won_the_game(self):
-        print("you won")
+        print("you won!")
 
     #tee kuva laskuista?
     #tai sit tee display kirjoitusta
@@ -92,7 +104,6 @@ class DontFall:
         #selvennä tätä o.O
 
         fontt = pygame.font.SysFont("Arial", 50)
-        #pygame.draw.rect(self.display, (0, 0, 0), (10, 10, 623, 28))
         pygame.draw.rect(self.display, (0, 0, 0), (10, 10, 280, 230))
 
         self.cube_info = {}
@@ -233,7 +244,7 @@ class DontFall:
 
         if self.fourthrow_2_on_cube_x and self.fourthrow_2_on_cube_y:
             if 8 in self.cube_choices:
-                text = fontt.render(f"0 + 0", True, (255, 255, 255))
+                text = fontt.render(f"0 + 0 = ?", True, (255, 255, 255))
                 self.display.blit(text, (50, 100))
                 self.fourthrow_2 = self.display.blit(self.normal_cube_down2, (300, 450))
             else:
