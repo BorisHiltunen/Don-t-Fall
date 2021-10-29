@@ -36,6 +36,10 @@ class DontFall:
         self.normal_cube2 = pygame.image.load("normal cube2.png")
         self.normal_cube_down = pygame.image.load("normal cube down.png")
         self.normal_cube_down2 = pygame.image.load("normal cube down2.png")
+        self.normal0 = pygame.image.load("0.png")
+        self.normal1 = pygame.image.load("11.png")
+        self.normal2 = pygame.image.load("2.png")
+        self.normal3 = pygame.image.load("3.png")
 
     def won_the_game(self):
         print("you won")
@@ -45,26 +49,38 @@ class DontFall:
     #vähänniinku rahasateessa
     # ja vaihtuu vasta, kun on ratkaistu
     def showing_calculations(self):
+        pass
         #print(self.calculations[randint(0,8)])
-        self.display.blit(self.normal_cube_down, (100, 75))
+        #self.display.blit(self.normal_cube_down, (100, 75))
 
     def right_cubes(self):
+        self.all_cubes = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        self.all_cubes2 = {}
+
         self.cube_choices = []
         self.numbers_on_cubes = []
         self.calculation_choices = []
 
+        self.cube_choices2 = {}
+        self.numbers_on_cubes2 = []
+        self.calculation_choices2 = []
+
+        for cube in self.all_cubes:
+            self.all_cubes2[str(cube)] = randint(0,3)
+
         #self.calculations = ["0 + 0", "0 + 1", "1 + 0", "0 + 2", "2 + 0", "1 + 1", "0 + 3", "1 + 2", "2 + 1", "3 + 0"]
 
         self.cube_choices = [0, 2, 1, 4, 7, 8, 10]
-        self.numbers_on_cubes = [0, 0, 2, 1, 1, 3, 2, 1, 2, 1, 0]
-        for number in self.numbers_on_cubes:
-            if number == 0:
+        #tänki vois tehä randomisti
+        #self.numbers_on_cubes = [0, 0, 2, 1, 1, 3, 2, 1, 2, 1, 0]
+        for cube in self.all_cubes2:
+            if self.all_cubes2[cube] == 0:
                 self.calculation_choices.append(self.calculations[0])
-            elif number == 1:
+            elif self.all_cubes2[cube] == 1:
                 self.calculation_choices.append(self.calculations[randint(1,2)])
-            elif number == 2:
+            elif self.all_cubes2[cube] == 2:
                 self.calculation_choices.append(self.calculations[randint(3,5)])
-            elif number == 3:
+            elif self.all_cubes2[cube] == 3:
                 self.calculation_choices.append(self.calculations[randint(6,9)])
 
         #ja random
@@ -75,6 +91,10 @@ class DontFall:
     def cubes(self):
         #selvennä tätä o.O
 
+        fontt = pygame.font.SysFont("Arial", 50)
+        #pygame.draw.rect(self.display, (0, 0, 0), (10, 10, 623, 28))
+        pygame.draw.rect(self.display, (0, 0, 0), (10, 10, 280, 230))
+
         self.cube_info = {}
 
         #ensimmäinen rivi
@@ -82,98 +102,159 @@ class DontFall:
         self.firstrow_1_on_cube_y = 150 >= self.y-self.ball_on_cube.get_height() and 150 <= self.y+self.ball_on_cube.get_height()
 
         if self.firstrow_1_on_cube_x and self.firstrow_1_on_cube_y:
-            self.firstrow_1 = self.display.blit(self.normal_cube_down2, (300, 150))
+            #laita tää jokaseen
+            #muuta tätä miten tää kattoo
+            #kokeile miten joku joka ei oo listassa tekee
+            if 0 in self.cube_choices:
+                self.firstrow_1 = self.display.blit(self.normal_cube_down2, (300, 150))
+            else:
+                self.x = 313
+                self.y = 563
         else:
             #ylin
-            self.firstrow_1 = self.display.blit(self.normal_cube2, (300, 150))
+            self.firstrow_1 = self.display.blit(self.normal0, (300, 150))
         #sanakirjaan ensimmäisen ruutu rivin lisäys
         self.cube_info["firstrow_1"] = (self.firstrow_1.y, self.firstrow_1.x)
 
         #toinen rivi
-        self.secondrow_1_on_cube_x = 400 >= self.x-self.ball_on_cube.get_width() and 400 <= self.x+self.ball_on_cube.get_width()
+        self.secondrow_1_on_cube_x = 200 >= self.x-self.ball_on_cube.get_width() and 200 <= self.x+self.ball_on_cube.get_width()
         self.secondrow_1_on_cube_y = 250 >= self.y-self.ball_on_cube.get_height() and 250 <= self.y+self.ball_on_cube.get_height()
 
         if self.secondrow_1_on_cube_x and self.secondrow_1_on_cube_y:
-            self.secondrow_1 = self.display.blit(self.normal_cube_down2, (400, 250))
+            if 1 in self.cube_choices:
+                text = fontt.render(f"1 + 1 = ?", True, (255, 255, 255))
+                self.display.blit(text, (50, 100))
+                self.secondrow_1 = self.display.blit(self.normal_cube_down2, (200, 250))
+            else:
+                self.x = 313
+                self.y = 563
         else:
             #4alin
-            self.secondrow_1 = self.display.blit(self.normal_cube2, (400, 250))
+            self.secondrow_1 = self.display.blit(self.normal1, (200, 250))
 
-        self.secondrow_2_on_cube_x = 200 >= self.x-self.ball_on_cube.get_width() and 200 <= self.x+self.ball_on_cube.get_width()
+        self.secondrow_2_on_cube_x = 300 >= self.x-self.ball_on_cube.get_width() and 300 <= self.x+self.ball_on_cube.get_width()
         self.secondrow_2_on_cube_y = 250 >= self.y-self.ball_on_cube.get_height() and 250 <= self.y+self.ball_on_cube.get_height()
 
         if self.secondrow_2_on_cube_x and self.secondrow_2_on_cube_y:
-            self.secondrow_2 = self.display.blit(self.normal_cube_down2, (200, 250))
+            if 2 in self.cube_choices:
+                text = fontt.render(f"0 + 0 = ?", True, (255, 255, 255))
+                self.display.blit(text, (50, 100))
+                self.secondrow_2 = self.display.blit(self.normal_cube_down2, (300, 250))
+            else:
+                self.x = 313
+                self.y = 563
         else:
-            self.secondrow_2 = self.display.blit(self.normal_cube2, (200, 250))
+            self.secondrow_2 = self.display.blit(self.normal2, (300, 250))
 
-        self.secondrow_3_on_cube_x = 300 >= self.x-self.ball_on_cube.get_width() and 300 <= self.x+self.ball_on_cube.get_width()
+        self.secondrow_3_on_cube_x = 400 >= self.x-self.ball_on_cube.get_width() and 400 <= self.x+self.ball_on_cube.get_width()
         self.secondrow_3_on_cube_y = 250 >= self.y-self.ball_on_cube.get_height() and 250 <= self.y+self.ball_on_cube.get_height()
 
         if self.secondrow_3_on_cube_x and self.secondrow_3_on_cube_y:
-            self.secondrow_3 = self.display.blit(self.normal_cube_down2, (300, 250))
+            if 3 in self.cube_choices:
+                text = fontt.render(f"1 + 1 = ?", True, (255, 255, 255))
+                self.display.blit(text, (50, 100))
+                self.secondrow_3 = self.display.blit(self.normal_cube_down2, (400, 250))
+            else:
+                self.x = 313
+                self.y = 563
         else:
-            self.secondrow_3 = self.display.blit(self.normal_cube2, (300, 250))
+            self.secondrow_3 = self.display.blit(self.normal1, (400, 250))
         #sanakirjaan toisen ruutu rivin lisäys
         self.cube_info["secondrow_1"] = (self.secondrow_1.y, self.secondrow_1.x)
         self.cube_info["secondrow_2"] = (self.secondrow_2.y, self.secondrow_2.x)
         self.cube_info["secondrow_3"] = (self.secondrow_3.y, self.secondrow_3.x)
 
         #kolmas rivi
-        self.thirdrow_1_on_cube_x = 400 >= self.x-self.ball_on_cube.get_width() and 400 <= self.x+self.ball_on_cube.get_width()
+        self.thirdrow_1_on_cube_x = 200 >= self.x-self.ball_on_cube.get_width() and 200 <= self.x+self.ball_on_cube.get_width()
         self.thirdrow_1_on_cube_y = 350 >= self.y-self.ball_on_cube.get_height() and 350 <= self.y+self.ball_on_cube.get_height()
 
         if self.thirdrow_1_on_cube_x and self.thirdrow_1_on_cube_y:
-            self.thirdrow_1 = self.display.blit(self.normal_cube_down2, (400, 350))
+            if 4 in self.cube_choices:
+                text = fontt.render(f"1 + 0 = ?", True, (255, 255, 255))
+                self.display.blit(text, (50, 100))
+                self.thirdrow_1 = self.display.blit(self.normal_cube_down2, (200, 350))
+            else:
+                self.x = 313
+                self.y = 563
         else:
             #3alin
-            self.thirdrow_1 = self.display.blit(self.normal_cube2, (400, 350))
+            self.thirdrow_1 = self.display.blit(self.normal1, (200, 350))
 
-        self.thirdrow_2_on_cube_x = 200 >= self.x-self.ball_on_cube.get_width() and 200 <= self.x+self.ball_on_cube.get_width()
+        self.thirdrow_2_on_cube_x = 300 >= self.x-self.ball_on_cube.get_width() and 300 <= self.x+self.ball_on_cube.get_width()
         self.thirdrow_2_on_cube_y = 350 >= self.y-self.ball_on_cube.get_height() and 350 <= self.y+self.ball_on_cube.get_height()
 
         if self.thirdrow_2_on_cube_x and self.thirdrow_2_on_cube_y:
-            self.thirdrow_2 = self.display.blit(self.normal_cube_down2, (200, 350))
+            if 5 in self.cube_choices:
+                text = fontt.render(f"1 + 0 = ?", True, (255, 255, 255))
+                self.display.blit(text, (50, 100))
+                self.thirdrow_2 = self.display.blit(self.normal_cube_down2, (300, 350))
+            else:
+                self.x = 313
+                self.y = 563
         else:
-            self.thirdrow_2 = self.display.blit(self.normal_cube2, (200, 350))
+            self.thirdrow_2 = self.display.blit(self.normal3, (300, 350))
 
-        self.thirdrow_3_on_cube_x = 300 >= self.x-self.ball_on_cube.get_width() and 300 <= self.x+self.ball_on_cube.get_width()
+        self.thirdrow_3_on_cube_x = 400 >= self.x-self.ball_on_cube.get_width() and 400 <= self.x+self.ball_on_cube.get_width()
         self.thirdrow_3_on_cube_y = 350 >= self.y-self.ball_on_cube.get_height() and 350 <= self.y+self.ball_on_cube.get_height()
 
         if self.thirdrow_3_on_cube_x and self.thirdrow_3_on_cube_y:
-            self.thirdrow_3 = self.display.blit(self.normal_cube_down2, (300, 350))
+            if 6 in self.cube_choices:
+                text = fontt.render(f"2 + 1 = ?", True, (255, 255, 255))
+                self.display.blit(text, (50, 100))
+                self.thirdrow_3 = self.display.blit(self.normal_cube_down2, (400, 350))
+            else:
+                self.x = 313
+                self.y = 563
         else:
-            self.thirdrow_3 = self.display.blit(self.normal_cube2, (300, 350))
+            self.thirdrow_3 = self.display.blit(self.normal2, (400, 350))
         #sanakirjaan kolmannen ruutu riven lisäys
         self.cube_info["thirdrow_1"] = (self.thirdrow_1.y, self.thirdrow_1.x)
         self.cube_info["thirdrow_2"] = (self.thirdrow_2.y, self.thirdrow_2.x)
         self.cube_info["thirdrow_3"] = (self.thirdrow_3.y, self.thirdrow_3.x)
 
         #neljäs rivi
-        self.fourthrow_1_on_cube_x = 400 >= self.x-self.ball_on_cube.get_width() and 400 <= self.x+self.ball_on_cube.get_width()
+        self.fourthrow_1_on_cube_x = 200 >= self.x-self.ball_on_cube.get_width() and 200 <= self.x+self.ball_on_cube.get_width()
         self.fourthrow_1_on_cube_y = 450 >= self.y-self.ball_on_cube.get_height() and 450 <= self.y+self.ball_on_cube.get_height()
 
         if self.fourthrow_1_on_cube_x and self.fourthrow_1_on_cube_y:
-            self.fourthrow_1 = self.display.blit(self.normal_cube_down2, (400, 450))
+            if 7 in self.cube_choices:
+                text = fontt.render(f"1 + 0 = ?", True, (255, 255, 255))
+                self.display.blit(text, (50, 100))
+                self.fourthrow_1 = self.display.blit(self.normal_cube_down2, (200, 450))
+            else:
+                self.x = 313
+                self.y = 563
         else:
             #2alin
-            self.fourthrow_1 = self.display.blit(self.normal_cube2, (400, 450))
+            self.fourthrow_1 = self.display.blit(self.normal0, (200, 450))
 
-        self.fourthrow_2_on_cube_x = 200 >= self.x-self.ball_on_cube.get_width() and 200 <= self.x+self.ball_on_cube.get_width()
+        self.fourthrow_2_on_cube_x = 300 >= self.x-self.ball_on_cube.get_width() and 300 <= self.x+self.ball_on_cube.get_width()
         self.fourthrow_2_on_cube_y = 450 >= self.y-self.ball_on_cube.get_height() and 450 <= self.y+self.ball_on_cube.get_height()
 
         if self.fourthrow_2_on_cube_x and self.fourthrow_2_on_cube_y:
-            self.fourthrow_2 = self.display.blit(self.normal_cube_down2, (200, 450))
+            if 8 in self.cube_choices:
+                text = fontt.render(f"0 + 0", True, (255, 255, 255))
+                self.display.blit(text, (50, 100))
+                self.fourthrow_2 = self.display.blit(self.normal_cube_down2, (300, 450))
+            else:
+                self.x = 313
+                self.y = 563
         else:
-            self.fourthrow_2 = self.display.blit(self.normal_cube2, (200, 450))
+            self.fourthrow_2 = self.display.blit(self.normal2, (300, 450))
 
-        self.fourthrow_3_on_cube_x = 300 >= self.x-self.ball_on_cube.get_width() and 300 <= self.x+self.ball_on_cube.get_width()
+        self.fourthrow_3_on_cube_x = 400 >= self.x-self.ball_on_cube.get_width() and 400 <= self.x+self.ball_on_cube.get_width()
         self.fourthrow_3_on_cube_y = 450 >= self.y-self.ball_on_cube.get_height() and 450 <= self.y+self.ball_on_cube.get_height()
 
         if self.fourthrow_3_on_cube_x and self.fourthrow_3_on_cube_y:
-            self.fourthrow_3 = self.display.blit(self.normal_cube_down2, (300, 450))
+            if 9 in self.cube_choices:
+                text = fontt.render(f"1 + 1 = ?", True, (255, 255, 255))
+                self.display.blit(text, (50, 100))
+                self.fourthrow_3 = self.display.blit(self.normal_cube_down2, (400, 450))
+            else:
+                self.x = 313
+                self.y = 563
         else:
-            self.fourthrow_3 = self.display.blit(self.normal_cube2, (300, 450))
+            self.fourthrow_3 = self.display.blit(self.normal1, (400, 450))
         #sanakirjaan neljännen ruutu riven lisäys
         self.cube_info["fourthrow_1"] = (self.fourthrow_1.y, self.fourthrow_1.x)
         self.cube_info["fourthrow_2"] = (self.fourthrow_2.y, self.fourthrow_2.x)
@@ -183,10 +264,13 @@ class DontFall:
         self.fifthrow_1_on_cube_y = 550 >= self.y-self.ball_on_cube.get_height() and 550 <= self.y+self.ball_on_cube.get_height()
 
         if self.fifthrow_1_on_cube_x and self.fifthrow_1_on_cube_y:
+            #self.all_cubes[10]
+            teksti = fontt.render(f"1 + 1 = ?", True, (255, 255, 255))
+            self.display.blit(teksti, (50, 100))
             self.fifthrow_1 = self.display.blit(self.normal_cube_down2, (300, 550))
         else:
             #alin
-            self.fifthrow_1 = self.display.blit(self.normal_cube2, (300, 550))
+            self.fifthrow_1 = self.display.blit(self.normal0, (300, 550))
         #sanakirjaan viidennen ruutu riven lisäys
         self.cube_info["fifthrow_1"] = (self.fifthrow_1.y, self.fifthrow_1.x)
 
@@ -202,6 +286,7 @@ class DontFall:
             if self.done:
                 self.won_the_game()
                 break
+            #print(self.x)
 
     def analyse_events(self):
         #self.character()
@@ -253,6 +338,7 @@ class DontFall:
                     if self.left:
                         self.x -= 100
                         self.locked = True
+                #muokkaa tätä kohtaa
                 if self.x == 213:
                     if self.y < 563:
                         if self.down:
@@ -271,7 +357,16 @@ class DontFall:
                         if self.up:
                             self.y -= 100
                             self.locked = True
-                else:
+                #miks tää nyt heittää reunast reunaa
+                elif self.x == 313:
+                    #if self.x < 413:
+                        #if self.right:
+                            #self.x += 100
+                            #self.locked = True
+                    #if self.x > 213:
+                        #if self.left:
+                            #self.x -= 100
+                            #self.locked = True
                     if self.y < 563:
                         if self.down:
                             self.y += 100
