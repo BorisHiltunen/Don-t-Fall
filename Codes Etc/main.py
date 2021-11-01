@@ -1,15 +1,18 @@
+#Importing necessary modules or methods
 import pygame
 from random import randint
 
+#Class called DontFall
 class DontFall:
     #Initializing necessary attributes
     def __init__(self):
+        #Initializes all imported pygame modules
         pygame.init()
 
-        #This downloads pictures
+        #Accessing funktion that downloads pictures
         self.download_pictures()
 
-        #here are calculations in the correct order
+        #here are the needed calculation inside a list in ascending order
         self.calculations = ["0 + 0", "0 + 1", "1 + 0", "0 + 2", "2 + 0", "1 + 1", "0 + 3", "1 + 2", "2 + 1", "3 + 0"]
 
         #Here we specify how large game window we want
@@ -22,7 +25,7 @@ class DontFall:
         self.down = False
         self.up = False
 
-        #This locks movement to just move one block at a time
+        #This locks movement to move one block at a time
         self.locked = False
 
         #This changes the scene or adds a text that shows that you have won the game
@@ -35,14 +38,17 @@ class DontFall:
         #Here we initiate the window
         self.display = pygame.display.set_mode((self.width, self.height))
  
-        #Here we set the caption
+        #Here we set the caption on top of the window
         pygame.display.set_caption("Don't Fall")
  
-        #This is a function that loops over and over
+        #Accessing a function that loops over and over
         #Thus making the game flow
         self.loop()
 
+    #Function that downloads pictures
     def download_pictures(self):
+
+        #Downloading picture one by one while initializing variables that we can later access with the pictures as value
         self.ball_on_cube = pygame.image.load("ball on cube.png")
         self.normal_cube = pygame.image.load("normal cube.png")
         self.normal_cube2 = pygame.image.load("normal cube2.png")
@@ -53,31 +59,51 @@ class DontFall:
         self.normal2 = pygame.image.load("2.png")
         self.normal3 = pygame.image.load("3.png")
 
+    #Function that prints text when a player has won the game
     def won_the_game(self):
+        #Prints: "you won!"
         print("you won!")
 
     #tee kuva laskuista?
     #tai sit tee display kirjoitusta
     #vähänniinku rahasateessa
     # ja vaihtuu vasta, kun on ratkaistu
+
+    #Function that in the future will help the display of calculations 
     def showing_calculations(self):
         pass
         #print(self.calculations[randint(0,8)])
         #self.display.blit(self.normal_cube_down, (100, 75))
 
+    #Function that helps in the selection of the right cubes
     def right_cubes(self):
+        #Initializing a list called self.all_cubes containing the numbers 0-10
         self.all_cubes = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+        #Initializing a dictionary called self.all_cubes2
         self.all_cubes2 = {}
 
+        #Initializing a list called self.cube_choices
         self.cube_choices = []
+
+        #Initializing a list called self.numbers_on_cubes
         self.numbers_on_cubes = []
+
+        #Initializing a list called self.calculation_choices
         self.calculation_choices = []
 
+        #Initializing a dictionary called self.cube_choices2
         self.cube_choices2 = {}
+
+        #Initializing a list called self.numbers_on_cubes2
         self.numbers_on_cubes2 = []
+
+        #Initializing a list called self.calculation_choices2
         self.calculation_choices2 = []
 
+        #For loop that iterates through a list called self.all_cubes while initializing keys and values to a dictionary called self.all_cubes2
         for cube in self.all_cubes:
+            #Initializing a key with the name of the iterate object from self.all_cubes and the value of a random number 0 to 3 initialized with a method called randint which was imported from random module
             self.all_cubes2[str(cube)] = randint(0,3)
 
         #self.calculations = ["0 + 0", "0 + 1", "1 + 0", "0 + 2", "2 + 0", "1 + 1", "0 + 3", "1 + 2", "2 + 1", "3 + 0"]
@@ -100,6 +126,7 @@ class DontFall:
         #while True:
             #cube_choices.append()
 
+    #Function that is responsible for making the squares work as intended
     def cubes(self):
         #selvennä tätä o.O
 
@@ -287,6 +314,8 @@ class DontFall:
 
     #def character(self):
 
+    #Function that loops over and over
+    #Thus making the game flow
     def loop(self):
         
         kello = pygame.time.Clock()
@@ -299,6 +328,7 @@ class DontFall:
                 break
             #print(self.x)
 
+    #Function that is mostly responsible for the way the character is moving
     def analyse_events(self):
         #self.character()
 
@@ -443,6 +473,7 @@ class DontFall:
                         self.y -= 100
                         self.locked = True
 
+    #Function that basically draws the game
     def draw_the_game(self):
  
         self.display.fill((0,100,100))
@@ -458,5 +489,7 @@ class DontFall:
  
         pygame.display.flip()
 
+#Used to execute code if the file is run directly
 if __name__ == "__main__":
+    #Calling a class called DontFall
     DontFall()
