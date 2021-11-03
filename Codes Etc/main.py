@@ -151,18 +151,35 @@ class DontFall:
         #Initializing a dictionary called self.cube_info
         self.cube_info = {}
 
+        #Here we initialize the game's squares and make them work as intended
+        #In a slightly lazy way the same code will be repeated several times
+        #This will be fixed in the future but for now the idea is to just make the game work as intended
+        #Since the code will be repeated just the first lines of code will be documented
+
         #First row
+
+        #Initializing two attributes called self.firstrow_1_on_cube_x and self.firstrow_1_on_cube_y
+        #These attributes are booleans and they return truth values based on the coordinates of the playable character and the game's squares
+        #If the playable character on this instance is on the first square as in the top square these attributes return True
         self.firstrow_1_on_cube_x = 300 >= self.x-self.ball_on_cube.get_width() and 300 <= self.x+self.ball_on_cube.get_width()
         self.firstrow_1_on_cube_y = 150 >= self.y-self.ball_on_cube.get_height() and 150 <= self.y+self.ball_on_cube.get_height()
 
+        #If sentence that will be chosen if both attributes self.firstrow_1_on_cube_x and self.firstrow_1_on_cube_y return True
         if self.firstrow_1_on_cube_x and self.firstrow_1_on_cube_y:
+            #If sentence that will be chosen if number 0 is in a list called self.cube_choices
             if 0 in self.cube_choices:
+                #Initializing attribute called self.firstrow_1 that gets a picture of a pushed down square and it's coordinates as its value
                 self.firstrow_1 = self.display.blit(self.normal_cube_down2, (300, 150))
+            #If sentence that will be chosen if number 0 is not in a list called self.cube_choices
             else:
+                #Initializing attributes sel.x and self.y again this time with the number values of 313 and 563
                 self.x = 313
                 self.y = 563
+        #If sentence that will be chosen if both attributes self.firstrow_1_on_cube_x and self.firstrow_1_on_cube_y return False
         else:
             #Top
+
+            #Initializing attribute called self.firstrow_1 that gets a picture of a square that is not pushed down and it's coordinates as its value
             self.firstrow_1 = self.display.blit(self.normal0, (300, 150))
         #Adding the firsth row to a dictionary called self.cube_info
         self.cube_info["firstrow_1"] = (self.firstrow_1.y, self.firstrow_1.x)
@@ -258,7 +275,7 @@ class DontFall:
                 self.y = 563
         else:
             self.thirdrow_3 = self.display.blit(self.normal2, (400, 350))
-        ##Adding the third row to a dictionary called self.cube_info
+        #Adding the third row to a dictionary called self.cube_info
         self.cube_info["thirdrow_1"] = (self.thirdrow_1.y, self.thirdrow_1.x)
         self.cube_info["thirdrow_2"] = (self.thirdrow_2.y, self.thirdrow_2.x)
         self.cube_info["thirdrow_3"] = (self.thirdrow_3.y, self.thirdrow_3.x)
@@ -398,13 +415,25 @@ class DontFall:
                 #Ends the game
                 exit()
 
+        #Here we make game's playable character move as intended
+        #Once again in a slightly lazy way the same code will be repeated several times
+        #This too will be fixed in the future but for now the idea is to just make the game work as intended
+        #Since the code will be repeated just the first lines of code will be documented
+
+        #If sentence that will be chosen if attribute called self.locked returns False
         if self.locked == False:
             #Ok works but looks horrid
             #Here is just simply too much code and too much repetition
+
+            #If sentence that will be chosen if self.y is over 463
             if self.y > 463:
+                #If sentence that will be chosen if self.y is over 250
                 if self.y > 250:
+                    #If sentence that will be chosen if attribute called self.up return True
                     if self.up:
+                        #self.y will be subtracked by 100 causing the playable character to move upwards
                         self.y -= 100
+                        #Causes the player's movement to be locked thus making the player only move 1 block with one key press
                         self.locked = True
             #Here are still some problems
             elif self.y == 263:
