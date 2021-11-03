@@ -57,13 +57,6 @@ class DontFall:
         self.normal1 = pygame.image.load("11.png")
         self.normal2 = pygame.image.load("2.png")
         self.normal3 = pygame.image.load("3.png")
-        self.background = pygame.image.load("background.png")
-        self.background1 = pygame.image.load("blue stars.png")
-        self.background2 = pygame.image.load("Cubes.png")
-        self.background3 = pygame.image.load("Green warp.png")
-        self.background4 = pygame.image.load("colors.png")
-        self.background6 = pygame.image.load("22.png")
-        self.background7 = pygame.image.load("grass2.png")
 
     #Function that prints text when a player has won the game
     def won_the_game(self):
@@ -153,7 +146,7 @@ class DontFall:
         #The shapes color is black -> (0, 0, 0)
         #The coordinations of the shape are as follows: x = 10 and y = 10
         #And the size of the shape is 280 X 230
-        pygame.draw.rect(self.display, (0, 170, 50), (40, 89, 220, 80))
+        pygame.draw.rect(self.display, (0, 0, 0), (10, 10, 280, 230))
 
         #Initializing a dictionary called self.cube_info
         self.cube_info = {}
@@ -550,9 +543,6 @@ class DontFall:
  
         #Filling the display with the wanted color
         self.display.fill((0,100,100))
-
-        #Filling the display with a picture of stars
-        self.display.blit(self.background7, (0, 0))
 
         #Accessing function that is responsible for making the squares work as intended
         self.cubes()
