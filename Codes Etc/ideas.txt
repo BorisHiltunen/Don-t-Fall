@@ -1,0 +1,20 @@
+9.40 Ruutujen ja laskujen valinta randomisti
+vaihtoehtoja
+1. ruutujen numerot 0-10
+2. seuraavan ruudun valinta 1-3
+
+10.24 Oikea reitti
+> oikean reitin valinta on nyt randomia, vielä pitää vain muuttaa laskut ja ruutujen kuvat
+> Vaikuttaisi kuitenkin että vielä voi tulla monia reittejä yhden sijasta tai muunmuassa 4 ruutua muodostuva neliö missä kaikissa voi kävellä
+> Ei kuitenkaan ole vielä tietoa siitä, että toimiiko ruudut kuitenkin niinkuin on ajatus eli yks vastaus per lasku
+-> okei ei toimi, muttei tämä vielä ole ongelma voi tehdä monivaihtoehtoja ruuduille eli laskuun on kaksi oikeaa vastausta
+
+11.00 kun jatkuu
+1. laskut ja ruutujen numerot toimimaan
+2. viimeisen ruudun liikkuminen oikein
+
+14.15 
+- nyt laskut ja ruudut on laitettu, mutta laskut ovat samassa kohdassa ruutujen kanssa eli kun vaikka on 2 päällä niin lasku on 1 + 1 = ?
+- on myös tyhmää että väärät on aina 3
+O okei voit ottaa indexin ruudusta (ruutujen järjestys 0-10) ja ottaa seuraavan?
+O okei sain toimimaan muttei aina toimi?

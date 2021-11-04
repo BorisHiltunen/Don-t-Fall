@@ -103,8 +103,16 @@ class DontFall:
             #print(self.chosen_answers[self.right_path[self.chosen_answers[number]]])
 
             #edit this so that the following number will get the next numbers calculation as its value
-            #Several if sentences that will be chosen depending on the iterating object from a dictionary called self.chosen_answers
-            #The following number of the iterating object  will get the next objects calculation as its value
+            #if self.chosen_answers[number] == 0:
+                #self.chosen_calculations[number] = self.calculations[0]
+            #if self.chosen_answers[number] == 1:
+                #self.chosen_calculations[number] = self.calculations[randint(1,2)]
+            #if self.chosen_answers[number] == 2:
+                #self.chosen_calculations[number] = self.calculations[randint(3,5)]
+            #if self.chosen_answers[number] == 3:
+                #self.chosen_calculations[number] = self.calculations[randint(6,9)]
+
+            #testing
             if self.chosen_answers[self.right_path[self.right_path.index(number) + 1]] == 0:
                 self.chosen_calculations[number] = self.calculations[0]
             if self.chosen_answers[self.right_path[self.right_path.index(number) + 1]] == 1:

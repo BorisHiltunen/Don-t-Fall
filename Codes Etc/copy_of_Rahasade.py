@@ -39,7 +39,7 @@ class Rahasade:
         self.silmukka()
  
     def lataa_kuvat(self):
-        self.robo = pygame.image.load("ball on cube.png")
+        self.robo = pygame.image.load("ball on cube1.png")
         self.kolikko = pygame.image.load("normal cube down.png")
         self.hirvio = pygame.image.load("normal cube down2.png")
  
