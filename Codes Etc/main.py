@@ -14,13 +14,13 @@ class DontFall:
         #Here are the needed calculations inside a list in ascending order
         self.calculations = ["0 + 0", "0 + 1", "1 + 0", "0 + 2", "2 + 0", "1 + 1", "0 + 3", "1 + 2", "2 + 1", "3 + 0"]
 
+        #NB
         #Right now there are two initializions for attribue self.all_cubes
+
         #Initializing a list called self.all_cubes containing the numbers 0-10
         self.all_cubes = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-        self.count = 0
-
-        #every possible option
+        #Every possible option for the game's right path
         #10 -> 8
         #9 -> 8, 6
         #8 -> 7, 5, 9, 10
@@ -45,15 +45,21 @@ class DontFall:
         #2 -> 0
         #1 -> 2
 
-        #Several lists of possible options
+        #Several lists of possible options for the next move
         eight = [7, 5, 9]
         six = [5, 3]
         five = [4, 2, 6]
         four = [1, 5]
 
         #Randomizing the right path
+
+        #Initializing a list called self.right_path
         self.right_path = []
+
+        #Appending the number 10 to the list called self.right_path
         self.right_path.append(10)
+
+        #While loop that fills the list called self.right_path depending on the latest value added to the list
         while True:
             if self.right_path[len(self.right_path)-1] == 10:
                 self.right_path.append(8)
@@ -76,12 +82,9 @@ class DontFall:
                 break
             if self.right_path[len(self.right_path)-1] == 1:
                 self.right_path.append(2)
+        
+        #Appending a number to the list called self.right_path so it works as intended
         self.right_path.append(0)
-
-        #maybe it will be needed to add one random number at the end of self.right_path
-
-        #delete after use
-        #self.calculations = ["0 + 0", "0 + 1", "1 + 0", "0 + 2", "2 + 0", "1 + 1", "0 + 3", "1 + 2", "2 + 1", "3 + 0"]
 
         #Randomizing the answers for the calculations
         self.chosen_answers = {}
@@ -89,20 +92,22 @@ class DontFall:
             self.chosen_answers[number] = randint(0,3)
 
         #Randomizing the answers
+        #Initializing a dictionary called self.chosen_calculations
         self.chosen_calculations = {}
-        count = 0
+
+        #For loop that iterates through a dictionary called self.chosen_answers
         for number in self.chosen_answers:
+
+            #Useful information
             #number is a key from self.chosen_answers -> right cube numbers
             #self.chosen_answers[number] is a value from self.chosen_answers -> right calculation answers
             #self.chosen_answers[self.right_path[self.chosen_answers[number]]] -> right cube numbers?
 
-            count += 1
-
+            #Several print functions inteded for testing
             #print(number)
             #print(self.chosen_answers[number])
             #print(self.chosen_answers[self.right_path[self.chosen_answers[number]]])
 
-            #edit this so that the following number will get the next numbers calculation as its value
             #Several if sentences that will be chosen depending on the iterating object from a dictionary called self.chosen_answers
             #The following number of the iterating object  will get the next objects calculation as its value
             if self.chosen_answers[self.right_path[self.right_path.index(number) + 1]] == 0:
@@ -181,6 +186,9 @@ class DontFall:
         pass
         #print(self.calculations[randint(0,8)])
         #self.display.blit(self.normal_cube_down, (100, 75))
+
+    #NB
+    #Edit the code so function called right_cubes is more usefull
 
     #Function that helps in the selection of the right cubes
     def right_cubes(self):
@@ -290,6 +298,8 @@ class DontFall:
 
             #Initializing attribute called self.firstrow_1 that gets a picture of a square that is not pushed down and it's coordinates as its value
             if 0 in self.right_path:
+
+                #Several if sentences that will be chosen depending on the number that is will be on the cube
                 if self.chosen_answers[0] == 0:
                     self.firstrow_1 = self.display.blit(self.normal0, (300, 150))
                 elif self.chosen_answers[0] == 1:
