@@ -153,23 +153,23 @@ class DontFall:
     def download_pictures(self):
 
         #Downloading picture one by one while initializing variables that we can later access with the pictures as value
-        self.ball_on_cube = pygame.image.load("ball on cube1.png")
+        self.ball_on_cube = pygame.image.load("ball on cube2.png")
         self.normal_cube = pygame.image.load("normal cube.png")
         self.normal_cube2 = pygame.image.load("normal cube2.png")
         self.normal_cube_down = pygame.image.load("normal cube down.png")
-        self.normal_cube_down2 = pygame.image.load("normal cube down2.png")
-        self.normal0 = pygame.image.load("0 (0).png")
-        self.normal1 = pygame.image.load("1 (1).png")
-        self.normal2 = pygame.image.load("2 (2).png")
-        self.normal3 = pygame.image.load("3 (3).png")
-        self.calculation_board = pygame.image.load("calculation board.png")
+        self.normal_cube_down2 = pygame.image.load("normal cube down2b.png")
+        self.normal0 = pygame.image.load("0b.png")
+        self.normal1 = pygame.image.load("1b.png")
+        self.normal2 = pygame.image.load("2b.png")
+        self.normal3 = pygame.image.load("3b.png")
+        self.calculation_board = pygame.image.load("calculation board2.png")
         self.background = pygame.image.load("background.png")
         self.background1 = pygame.image.load("blue stars.png")
         self.background2 = pygame.image.load("Cubes.png")
         self.background3 = pygame.image.load("Green warp.png")
         self.background4 = pygame.image.load("colors.png")
         self.background6 = pygame.image.load("22.png")
-        self.background7 = pygame.image.load("grass2.png")
+        self.background7 = pygame.image.load("grass3.png")
 
     #Function that prints text when a player has won the game
     def won_the_game(self):
