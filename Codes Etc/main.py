@@ -12,7 +12,7 @@ class DontFall:
         self.download_pictures()
 
         #Here are the needed calculations inside a list in ascending order
-        self.calculations = ["0 + 0", "0 + 1", "1 + 0", "0 + 2", "2 + 0", "1 + 1", "0 + 3", "1 + 2", "2 + 1", "3 + 0"]
+        self.calculations = ["0 + 0 = ?", "0 + 1 = ?", "1 + 0 = ?", "0 + 2 = ?", "2 + 0 = ?", "1 + 1 = ?", "0 + 3 = ?", "1 + 2 = ?", "2 + 1 = ?", "3 + 0 = ?"]
 
         #NB
         #Right now there are two initializions for attribue self.all_cubes
