@@ -91,6 +91,24 @@ class DontFall:
         for number in self.right_path:
             self.chosen_answers[number] = randint(0,3)
 
+        #testing how to make all numbers random
+        #for number in range(11):
+            #if number not in self.chosen_answers:
+                #self.chosen_answers[number] = randint(0,3)
+
+        #Randomizing the initializing of the values for the wrong cubes
+        self.number0 = randint(0,3)
+        self.number1 = randint(0,3)
+        self.number2 = randint(0,3)
+        self.number3 = randint(0,3)
+        self.number4 = randint(0,3)
+        self.number5 = randint(0,3)
+        self.number6 = randint(0,3)
+        self.number7 = randint(0,3)
+        self.number8 = randint(0,3)
+        self.number9 = randint(0,3)
+        self.number10 = randint(0,3)
+
         #Randomizing the answers
         #Initializing a dictionary called self.chosen_calculations
         self.chosen_calculations = {}
@@ -309,7 +327,14 @@ class DontFall:
                 elif self.chosen_answers[0] == 3:
                     self.firstrow_1 = self.display.blit(self.normal3, (300, 150))
             else:
-                self.firstrow_1 = self.display.blit(self.normal3, (300, 150))
+                if self.number0 == 0:
+                    self.firstrow_1 = self.display.blit(self.normal0, (300, 150))
+                elif self.number0 == 1:
+                    self.firstrow_1 = self.display.blit(self.normal1, (300, 150))
+                elif self.number0 == 2:
+                    self.firstrow_1 = self.display.blit(self.normal2, (300, 150))
+                elif self.number0 == 3:
+                    self.firstrow_1 = self.display.blit(self.normal3, (300, 150))
         #Adding the firsth row to a dictionary called self.cube_info
         self.cube_info["firstrow_1"] = (self.firstrow_1.y, self.firstrow_1.x)
 
@@ -337,7 +362,14 @@ class DontFall:
                 elif self.chosen_answers[1] == 3:
                     self.secondrow_1 = self.display.blit(self.normal3, (200, 250))
             else:
-                self.secondrow_1 = self.display.blit(self.normal3, (200, 250))
+                if self.number1 == 0:
+                    self.secondrow_1 = self.display.blit(self.normal0, (200, 250))
+                elif self.number1 == 1:
+                    self.secondrow_1 = self.display.blit(self.normal1, (200, 250))
+                elif self.number1 == 2:
+                    self.secondrow_1 = self.display.blit(self.normal2, (200, 250))
+                elif self.number1 == 3:
+                    self.secondrow_1 = self.display.blit(self.normal3, (200, 250))
 
         self.secondrow_2_on_cube_x = 300 >= self.x-self.ball_on_cube.get_width() and 300 <= self.x+self.ball_on_cube.get_width()
         self.secondrow_2_on_cube_y = 250 >= self.y-self.ball_on_cube.get_height() and 250 <= self.y+self.ball_on_cube.get_height()
@@ -361,7 +393,14 @@ class DontFall:
                 elif self.chosen_answers[2] == 3:
                     self.secondrow_2 = self.display.blit(self.normal3, (300, 250))
             else:
-                self.secondrow_2 = self.display.blit(self.normal3, (300, 250))
+                if self.number2 == 0:
+                    self.secondrow_2 = self.display.blit(self.normal0, (300, 250))
+                elif self.number2 == 1:
+                    self.secondrow_2 = self.display.blit(self.normal1, (300, 250))
+                elif self.number2 == 2:
+                    self.secondrow_2 = self.display.blit(self.normal2, (300, 250))
+                elif self.number2 == 3:
+                    self.secondrow_2 = self.display.blit(self.normal3, (300, 250))
 
         self.secondrow_3_on_cube_x = 400 >= self.x-self.ball_on_cube.get_width() and 400 <= self.x+self.ball_on_cube.get_width()
         self.secondrow_3_on_cube_y = 250 >= self.y-self.ball_on_cube.get_height() and 250 <= self.y+self.ball_on_cube.get_height()
@@ -385,7 +424,14 @@ class DontFall:
                 elif self.chosen_answers[3] == 3:
                     self.secondrow_3 = self.display.blit(self.normal3, (400, 250))
             else:
-                self.secondrow_3 = self.display.blit(self.normal3, (400, 250))
+                if self.number3 == 0:
+                    self.secondrow_3 = self.display.blit(self.normal0, (400, 250))
+                elif self.number3 == 1:
+                    self.secondrow_3 = self.display.blit(self.normal1, (400, 250))
+                elif self.number3 == 2:
+                    self.secondrow_3 = self.display.blit(self.normal2, (400, 250))
+                elif self.number3 == 3:
+                    self.secondrow_3 = self.display.blit(self.normal3, (400, 250))
         #Adding the second row to a dictionary called self.cube_info
         self.cube_info["secondrow_1"] = (self.secondrow_1.y, self.secondrow_1.x)
         self.cube_info["secondrow_2"] = (self.secondrow_2.y, self.secondrow_2.x)
@@ -415,7 +461,14 @@ class DontFall:
                 elif self.chosen_answers[4] == 3:
                     self.thirdrow_1 = self.display.blit(self.normal3, (200, 350))
             else:
-                self.thirdrow_1 = self.display.blit(self.normal3, (200, 350))
+                if self.number4 == 0:
+                    self.thirdrow_1 = self.display.blit(self.normal0, (200, 350))
+                elif self.number4 == 1:
+                    self.thirdrow_1 = self.display.blit(self.normal1, (200, 350))
+                elif self.number4 == 2:
+                    self.thirdrow_1 = self.display.blit(self.normal2, (200, 350))
+                elif self.number4 == 3:
+                    self.thirdrow_1 = self.display.blit(self.normal3, (200, 350))
 
         self.thirdrow_2_on_cube_x = 300 >= self.x-self.ball_on_cube.get_width() and 300 <= self.x+self.ball_on_cube.get_width()
         self.thirdrow_2_on_cube_y = 350 >= self.y-self.ball_on_cube.get_height() and 350 <= self.y+self.ball_on_cube.get_height()
@@ -439,7 +492,14 @@ class DontFall:
                 elif self.chosen_answers[5] == 3:
                     self.thirdrow_2 = self.display.blit(self.normal3, (300, 350))
             else:
-                self.thirdrow_2 = self.display.blit(self.normal3, (300, 350))
+                if self.number5 == 0:
+                    self.thirdrow_2 = self.display.blit(self.normal0, (300, 350))
+                elif self.number5 == 1:
+                    self.thirdrow_2 = self.display.blit(self.normal1, (300, 350))
+                elif self.number5 == 2:
+                    self.thirdrow_2 = self.display.blit(self.normal2, (300, 350))
+                elif self.number5 == 3:
+                    self.thirdrow_2 = self.display.blit(self.normal3, (300, 350))
 
         self.thirdrow_3_on_cube_x = 400 >= self.x-self.ball_on_cube.get_width() and 400 <= self.x+self.ball_on_cube.get_width()
         self.thirdrow_3_on_cube_y = 350 >= self.y-self.ball_on_cube.get_height() and 350 <= self.y+self.ball_on_cube.get_height()
@@ -463,7 +523,14 @@ class DontFall:
                 elif self.chosen_answers[6] == 3:
                     self.thirdrow_3 = self.display.blit(self.normal3, (400, 350))
             else:
-                self.thirdrow_3 = self.display.blit(self.normal3, (400, 350))
+                if self.number6 == 0:
+                    self.thirdrow_3 = self.display.blit(self.normal0, (400, 350))
+                elif self.number6 == 1:
+                    self.thirdrow_3 = self.display.blit(self.normal1, (400, 350))
+                elif self.number6 == 2:
+                    self.thirdrow_3 = self.display.blit(self.normal2, (400, 350))
+                elif self.number6 == 3:
+                    self.thirdrow_3 = self.display.blit(self.normal3, (400, 350))
 
         #Adding the third row to a dictionary called self.cube_info
         self.cube_info["thirdrow_1"] = (self.thirdrow_1.y, self.thirdrow_1.x)
@@ -494,7 +561,14 @@ class DontFall:
                 elif self.chosen_answers[7] == 3:
                     self.fourthrow_1 = self.display.blit(self.normal3, (200, 450))
             else:
-                self.fourthrow_1 = self.display.blit(self.normal3, (200, 450))
+                if self.number7 == 0:
+                    self.fourthrow_1 = self.display.blit(self.normal0, (200, 450))
+                elif self.number7 == 1:
+                    self.fourthrow_1 = self.display.blit(self.normal1, (200, 450))
+                elif self.number7 == 2:
+                    self.fourthrow_1 = self.display.blit(self.normal2, (200, 450))
+                elif self.number7 == 3:
+                    self.fourthrow_1 = self.display.blit(self.normal3, (200, 450))
 
         self.fourthrow_2_on_cube_x = 300 >= self.x-self.ball_on_cube.get_width() and 300 <= self.x+self.ball_on_cube.get_width()
         self.fourthrow_2_on_cube_y = 450 >= self.y-self.ball_on_cube.get_height() and 450 <= self.y+self.ball_on_cube.get_height()
@@ -518,7 +592,14 @@ class DontFall:
                 elif self.chosen_answers[8] == 3:
                     self.fourthrow_2 = self.display.blit(self.normal3, (300, 450))
             else:
-                self.fourthrow_2 = self.display.blit(self.normal3, (300, 450))
+                if self.number8 == 0:
+                    self.fourthrow_2 = self.display.blit(self.normal0, (300, 450))
+                elif self.number8 == 1:
+                    self.fourthrow_2 = self.display.blit(self.normal1, (300, 450))
+                elif self.number8 == 2:
+                    self.fourthrow_2 = self.display.blit(self.normal2, (300, 450))
+                elif self.number8 == 3:
+                    self.fourthrow_2 = self.display.blit(self.normal3, (300, 450))
 
         self.fourthrow_3_on_cube_x = 400 >= self.x-self.ball_on_cube.get_width() and 400 <= self.x+self.ball_on_cube.get_width()
         self.fourthrow_3_on_cube_y = 450 >= self.y-self.ball_on_cube.get_height() and 450 <= self.y+self.ball_on_cube.get_height()
@@ -543,7 +624,14 @@ class DontFall:
                 elif self.chosen_answers[9] == 3:
                     self.fourthrow_3 = self.display.blit(self.normal3, (400, 450))
             else:
-                self.fourthrow_3 = self.display.blit(self.normal3, (400, 450))
+                if self.number9 == 0:
+                    self.fourthrow_3 = self.display.blit(self.normal0, (400, 450))
+                elif self.number9 == 1:
+                    self.fourthrow_3 = self.display.blit(self.normal1, (400, 450))
+                elif self.number9 == 2:
+                    self.fourthrow_3 = self.display.blit(self.normal2, (400, 450))
+                elif self.number9 == 3:
+                    self.fourthrow_3 = self.display.blit(self.normal3, (400, 450))
         #Adding the fourth row to a dictionary called self.cube_info
         self.cube_info["fourthrow_1"] = (self.fourthrow_1.y, self.fourthrow_1.x)
         self.cube_info["fourthrow_2"] = (self.fourthrow_2.y, self.fourthrow_2.x)
@@ -559,6 +647,7 @@ class DontFall:
 
             #delete unnecessary
             #print(self.chosen_answers[self.right_path[self.chosen_answers[10]]])
+            #text2 = fontt.render(f"{self.chosen_calculations[10]}", True, (100, 40, 0))
 
             text = fontt.render(f"{self.chosen_calculations[10]}", True, (255, 255, 255))
             self.display.blit(text, (50, 100))

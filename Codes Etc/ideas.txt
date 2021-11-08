@@ -1,3 +1,5 @@
+4.11.2021
+
 9.40 Ruutujen ja laskujen valinta randomisti
 vaihtoehtoja
 1. ruutujen numerot 0-10
@@ -18,3 +20,9 @@ vaihtoehtoja
 - on myös tyhmää että väärät on aina 3
 O okei voit ottaa indexin ruudusta (ruutujen järjestys 0-10) ja ottaa seuraavan?
 O okei sain toimimaan muttei aina toimi?
+
+8.11.2021
+
+9.00 Väärien vastausten valitseminen randomisti
+- Ok väärät numerot valitaan nyt randomisti, mutta tapaa voisi parantaa
+> nyt kaikista numeroista kirjoitetaan atribuutti ja kaikille annetaan arvo
