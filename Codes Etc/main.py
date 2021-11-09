@@ -11,6 +11,17 @@ class DontFall:
         #Accessing funktion that downloads pictures
         self.download_pictures()
 
+        #Testing sound and music mechanincs for the game
+
+        #Initializing sounds
+        self.creak = pygame.mixer.Sound('creak2.wav')
+        self.fall = pygame.mixer.Sound('fall.wav')
+        self.win = pygame.mixer.Sound('win.wav')
+
+        #Initializing music
+        self.music = pygame.mixer.music.load('music.wav')
+        pygame.mixer.music.play(-1)
+
         #Here are the needed calculations inside a list in ascending order
         self.calculations = ["0 + 0 = ?", "0 + 1 = ?", "1 + 0 = ?", "0 + 2 = ?", "2 + 0 = ?", "1 + 1 = ?", "0 + 3 = ?", "1 + 2 = ?", "2 + 1 = ?", "3 + 0 = ?"]
 
@@ -149,6 +160,18 @@ class DontFall:
 
         #This locks movement to move one block at a time
         self.locked = False
+
+        #These locks lock sounds from making more than one sound per move
+        self.sound_lock1 = False
+        self.sound_lock2 = False
+        self.sound_lock3 = False
+        self.sound_lock4 = False
+        self.sound_lock5 = False
+        self.sound_lock6 = False
+        self.sound_lock7 = False
+        self.sound_lock8 = False
+        self.sound_lock9 = False
+        self.sound_lock10 = False
 
         #This changes the scene or adds a text that shows that you have won the game
         self.done = False
@@ -301,6 +324,9 @@ class DontFall:
 
         #If sentence that will be chosen if both attributes self.firstrow_1_on_cube_x and self.firstrow_1_on_cube_y return True
         if self.firstrow_1_on_cube_x and self.firstrow_1_on_cube_y:
+            #winning sound
+            if self.sound_lock == False:
+                self.win.play()
             #If sentence that will be chosen if number 0 is in a list called self.cube_choices
             if 0 in self.cube_choices:
                 #Initializing attribute called self.firstrow_1 that gets a picture of a pushed down square and it's coordinates as its value
@@ -344,13 +370,20 @@ class DontFall:
 
         if self.secondrow_1_on_cube_x and self.secondrow_1_on_cube_y:
             if 1 in self.right_path:
+                if self.sound_lock1 == False:
+                    self.creak.play()
+                    self.sound_lock1 = True
                 text = fontt.render(f"{self.chosen_calculations[1]}", True, (255, 255, 255))
                 self.display.blit(text, (50, 100))
                 self.secondrow_1 = self.display.blit(self.normal_cube_down2, (200, 250))
             else:
+                if self.sound_lock1 == False:
+                    self.fall.play()
+                    self.sound_lock1 = True
                 self.x = 313
                 self.y = 563
         else:
+            self.sound_lock1 = False
             #Fourth lowest
             if 1 in self.right_path:
                 if self.chosen_answers[1] == 0:
@@ -376,13 +409,20 @@ class DontFall:
 
         if self.secondrow_2_on_cube_x and self.secondrow_2_on_cube_y:
             if 2 in self.right_path:
+                if self.sound_lock2 == False:
+                    self.creak.play()
+                    self.sound_lock2 = True
                 text = fontt.render(f"{self.chosen_calculations[2]}", True, (255, 255, 255))
                 self.display.blit(text, (50, 100))
                 self.secondrow_2 = self.display.blit(self.normal_cube_down2, (300, 250))
             else:
+                if self.sound_lock2 == False:
+                    self.fall.play()
+                    self.sound_lock = True
                 self.x = 313
                 self.y = 563
         else:
+            self.sound_lock2 = False
             if 2 in self.right_path:
                 if self.chosen_answers[2] == 0:
                     self.secondrow_2 = self.display.blit(self.normal0, (300, 250))
@@ -407,13 +447,20 @@ class DontFall:
 
         if self.secondrow_3_on_cube_x and self.secondrow_3_on_cube_y:
             if 3 in self.right_path:
+                if self.sound_lock3 == False:
+                    self.creak.play()
+                    self.sound_lock3 = True
                 text = fontt.render(f"{self.chosen_calculations[3]}", True, (255, 255, 255))
                 self.display.blit(text, (50, 100))
                 self.secondrow_3 = self.display.blit(self.normal_cube_down2, (400, 250))
             else:
+                if self.sound_lock3 == False:
+                    self.fall.play()
+                    self.sound_lock3 = True
                 self.x = 313
                 self.y = 563
         else:
+            self.sound_lock3 = False
             if 3 in self.right_path:
                 if self.chosen_answers[3] == 0:
                     self.secondrow_3 = self.display.blit(self.normal0, (400, 250))
@@ -443,14 +490,21 @@ class DontFall:
 
         if self.thirdrow_1_on_cube_x and self.thirdrow_1_on_cube_y:
             if 4 in self.right_path:
+                if self.sound_lock4 == False:
+                    self.creak.play()
+                    self.sound_lock4 = True
                 text = fontt.render(f"{self.chosen_calculations[4]}", True, (255, 255, 255))
                 self.display.blit(text, (50, 100))
                 self.thirdrow_1 = self.display.blit(self.normal_cube_down2, (200, 350))
             else:
+                if self.sound_lock4 == False:
+                    self.fall.play()
+                    self.sound_lock4 = True
                 self.x = 313
                 self.y = 563
         else:
             #Third lowest
+            self.sound_lock4 = False
             if 4 in self.right_path:
                 if self.chosen_answers[4] == 0:
                     self.thirdrow_1 = self.display.blit(self.normal0, (200, 350))
@@ -475,13 +529,20 @@ class DontFall:
 
         if self.thirdrow_2_on_cube_x and self.thirdrow_2_on_cube_y:
             if 5 in self.right_path:
+                if self.sound_lock5 == False:
+                    self.creak.play()
+                    self.sound_lock5 = True
                 text = fontt.render(f"{self.chosen_calculations[5]}", True, (255, 255, 255))
                 self.display.blit(text, (50, 100))
                 self.thirdrow_2 = self.display.blit(self.normal_cube_down2, (300, 350))
             else:
+                if self.sound_lock5 == False:
+                    self.fall.play()
+                    self.sound_lock5 = True
                 self.x = 313
                 self.y = 563
         else:
+            self.sound_lock5 = False
             if 5 in self.right_path:
                 if self.chosen_answers[5] == 0:
                     self.thirdrow_2 = self.display.blit(self.normal0, (300, 350))
@@ -506,13 +567,20 @@ class DontFall:
 
         if self.thirdrow_3_on_cube_x and self.thirdrow_3_on_cube_y:
             if 6 in self.right_path:
+                if self.sound_lock6 == False:
+                    self.creak.play()
+                    self.sound_lock6 = True
                 text = fontt.render(f"{self.chosen_calculations[6]}", True, (255, 255, 255))
                 self.display.blit(text, (50, 100))
                 self.thirdrow_3 = self.display.blit(self.normal_cube_down2, (400, 350))
             else:
+                if self.sound_lock6 == False:
+                    self.fall.play()
+                    self.sound_lock6 = True
                 self.x = 313
                 self.y = 563
         else:
+            self.sound_lock6 = False
             if 6 in self.right_path:
                 if self.chosen_answers[6] == 0:
                     self.thirdrow_3 = self.display.blit(self.normal0, (400, 350))
@@ -543,14 +611,21 @@ class DontFall:
 
         if self.fourthrow_1_on_cube_x and self.fourthrow_1_on_cube_y:
             if 7 in self.right_path:
+                if self.sound_lock7 == False:
+                    self.creak.play()
+                    self.sound_lock7 = True
                 text = fontt.render(f"{self.chosen_calculations[7]}", True, (255, 255, 255))
                 self.display.blit(text, (50, 100))
                 self.fourthrow_1 = self.display.blit(self.normal_cube_down2, (200, 450))
             else:
+                if self.sound_lock7 == False:
+                    self.fall.play()
+                    self.sound_lock7 = True
                 self.x = 313
                 self.y = 563
         else:
             #Second lowest
+            self.sound_lock7 = False
             if 7 in self.right_path:
                 if self.chosen_answers[7] == 0:
                     self.fourthrow_1 = self.display.blit(self.normal0, (200, 450))
@@ -575,13 +650,21 @@ class DontFall:
 
         if self.fourthrow_2_on_cube_x and self.fourthrow_2_on_cube_y:
             if 8 in self.right_path:
+                if self.sound_lock8 == False:
+                    self.creak.play()
+                    self.sound_lock8 = True
                 text = fontt.render(f"{self.chosen_calculations[8]}", True, (255, 255, 255))
                 self.display.blit(text, (50, 100))
                 self.fourthrow_2 = self.display.blit(self.normal_cube_down2, (300, 450))
             else:
+                if self.sound_lock8 == False:
+                    self.fall.play()
+                    self.sound_lock8 = True
                 self.x = 313
                 self.y = 563
+
         else:
+            self.sound_lock8 = False
             if 8 in self.right_path:
                 if self.chosen_answers[8] == 0:
                     self.fourthrow_2 = self.display.blit(self.normal0, (300, 450))
@@ -600,7 +683,6 @@ class DontFall:
                     self.fourthrow_2 = self.display.blit(self.normal2, (300, 450))
                 elif self.number8 == 3:
                     self.fourthrow_2 = self.display.blit(self.normal3, (300, 450))
-
         self.fourthrow_3_on_cube_x = 400 >= self.x-self.ball_on_cube.get_width() and 400 <= self.x+self.ball_on_cube.get_width()
         self.fourthrow_3_on_cube_y = 450 >= self.y-self.ball_on_cube.get_height() and 450 <= self.y+self.ball_on_cube.get_height()
 
@@ -610,10 +692,17 @@ class DontFall:
                 text = fontt.render(f"{self.chosen_calculations[9]}", True, (255, 255, 255))
                 self.display.blit(text, (50, 100))
                 self.fourthrow_3 = self.display.blit(self.normal_cube_down2, (400, 450))
+                if self.sound_lock9 == False:
+                    self.creak.play()
+                    self.sound_lock9 = True
             else:
+                if self.sound_lock9 == False:
+                    self.fall.play()
+                    self.sound_lock9 = True
                 self.x = 313
                 self.y = 563
         else:
+            self.sound_lock9 = False
             if 9 in self.right_path:
                 if self.chosen_answers[9] == 0:
                     self.fourthrow_3 = self.display.blit(self.normal0, (400, 450))
@@ -648,6 +737,9 @@ class DontFall:
             #delete unnecessary
             #print(self.chosen_answers[self.right_path[self.chosen_answers[10]]])
             #text2 = fontt.render(f"{self.chosen_calculations[10]}", True, (100, 40, 0))
+            if self.sound_lock10 == False:
+                    self.creak.play()
+                    self.sound_lock10 = True
 
             text = fontt.render(f"{self.chosen_calculations[10]}", True, (255, 255, 255))
             self.display.blit(text, (50, 100))
@@ -655,6 +747,7 @@ class DontFall:
             self.fifthrow_1 = self.display.blit(self.normal_cube_down2, (300, 550))
         else:
             #Lowest
+            self.sound_lock10 = False
             if self.chosen_answers[10] == 0:
                 self.fifthrow_1 = self.display.blit(self.normal0, (300, 550))
             elif self.chosen_answers[10] == 1:

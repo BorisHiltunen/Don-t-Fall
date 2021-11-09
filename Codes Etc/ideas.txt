@@ -26,3 +26,14 @@ O okei sain toimimaan muttei aina toimi?
 9.00 Väärien vastausten valitseminen randomisti
 - Ok väärät numerot valitaan nyt randomisti, mutta tapaa voisi parantaa
 > nyt kaikista numeroista kirjoitetaan atribuutti ja kaikille annetaan arvo
+
+9.11.2021
+
+13.00 äänet
+
+äänet on nyt importattu
+ongelmat
+> musiikki ei soi (ehkä pitää olla mp3 tiedosto?)
+> äänet soi kokoajan jos seisoo ruudun päällä
+-> joku lukko tai sitten niin pitkä ääni ettei haittaa ja sitten pitäisi miettiä miten ääniä voi toistaa nopeasti eli esimerkiksi pelaajan poistuessa ruudulta ääni voisi katketa
+tai aloittaa hiljaisen äänen?
