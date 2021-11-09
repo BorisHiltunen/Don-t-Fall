@@ -19,8 +19,8 @@ class DontFall:
         self.win = pygame.mixer.Sound('win.wav')
 
         #Initializing music
-        self.music = pygame.mixer.music.load('music.wav')
-        pygame.mixer.music.play(-1)
+        #self.music = pygame.mixer.music.load('music.wav')
+        #pygame.mixer.music.play(-1)
 
         #Here are the needed calculations inside a list in ascending order
         self.calculations = ["0 + 0 = ?", "0 + 1 = ?", "1 + 0 = ?", "0 + 2 = ?", "2 + 0 = ?", "1 + 1 = ?", "0 + 3 = ?", "1 + 2 = ?", "2 + 1 = ?", "3 + 0 = ?"]
