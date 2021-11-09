@@ -325,8 +325,7 @@ class DontFall:
         #If sentence that will be chosen if both attributes self.firstrow_1_on_cube_x and self.firstrow_1_on_cube_y return True
         if self.firstrow_1_on_cube_x and self.firstrow_1_on_cube_y:
             #winning sound
-            if self.sound_lock == False:
-                self.win.play()
+            self.win.play()
             #If sentence that will be chosen if number 0 is in a list called self.cube_choices
             if 0 in self.cube_choices:
                 #Initializing attribute called self.firstrow_1 that gets a picture of a pushed down square and it's coordinates as its value
