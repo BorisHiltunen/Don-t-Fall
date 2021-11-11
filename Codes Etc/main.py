@@ -11,22 +11,18 @@ class DontFall:
         #Accessing funktion that downloads pictures
         self.download_pictures()
 
-        #Testing sound and music mechanincs for the game
-
-        #Initializing sounds
+        #Initializing sounds that will be used in the game
         self.creak = pygame.mixer.Sound('creak2.wav')
         self.fall = pygame.mixer.Sound('fall.wav')
         self.win = pygame.mixer.Sound('win.wav')
 
-        #Initializing music
-        #self.music = pygame.mixer.music.load('music.wav')
-        #pygame.mixer.music.play(-1)
+        #Initializing music that will be played in the background
+        self.music = pygame.mixer.music.load('d10.wav')
+        #Looping the music so it starts over and over
+        pygame.mixer.music.play(loops=-1)
 
         #Here are the needed calculations inside a list in ascending order
         self.calculations = ["0 + 0 = ?", "0 + 1 = ?", "1 + 0 = ?", "0 + 2 = ?", "2 + 0 = ?", "1 + 1 = ?", "0 + 3 = ?", "1 + 2 = ?", "2 + 1 = ?", "3 + 0 = ?"]
-
-        #NB
-        #Right now there are two initializions for attribue self.all_cubes
 
         #Initializing a list called self.all_cubes containing the numbers 0-10
         self.all_cubes = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -68,6 +64,7 @@ class DontFall:
         self.right_path = []
 
         #Appending the number 10 to the list called self.right_path
+        #It must be appended in the list first since it will always be the first cube to be stepped on
         self.right_path.append(10)
 
         #While loop that fills the list called self.right_path depending on the latest value added to the list
@@ -98,16 +95,15 @@ class DontFall:
         self.right_path.append(0)
 
         #Randomizing the answers for the calculations
+        #Initializing a dictionary called self.chosen_answers
         self.chosen_answers = {}
+        #For loop that iterates through a list called self.right_path
         for number in self.right_path:
+            #Initializing a random number as a value for a key that is called the same as the iterator object "number" from a list called self.right_path
+            #The key and value is then appended to a dictionary called self.chosen_answers
             self.chosen_answers[number] = randint(0,3)
 
-        #testing how to make all numbers random
-        #for number in range(11):
-            #if number not in self.chosen_answers:
-                #self.chosen_answers[number] = randint(0,3)
-
-        #Randomizing the initializing of the values for the wrong cubes
+        #Initializing random values for the wrong cubes
         self.number0 = randint(0,3)
         self.number1 = randint(0,3)
         self.number2 = randint(0,3)
@@ -132,7 +128,7 @@ class DontFall:
             #self.chosen_answers[number] is a value from self.chosen_answers -> right calculation answers
             #self.chosen_answers[self.right_path[self.chosen_answers[number]]] -> right cube numbers?
 
-            #Several print functions inteded for testing
+            #Several print functions intended for testing
             #print(number)
             #print(self.chosen_answers[number])
             #print(self.chosen_answers[self.right_path[self.chosen_answers[number]]])
@@ -194,106 +190,30 @@ class DontFall:
     def download_pictures(self):
 
         #Downloading picture one by one while initializing variables that we can later access with the pictures as value
-        self.ball_on_cube = pygame.image.load("ball on cube2.png")
-        self.normal_cube = pygame.image.load("normal cube.png")
-        self.normal_cube2 = pygame.image.load("normal cube2.png")
-        self.normal_cube_down = pygame.image.load("normal cube down.png")
-        self.normal_cube_down2 = pygame.image.load("normal cube down2b.png")
+        self.background7 = pygame.image.load("background2.png")
+        self.calculation_board = pygame.image.load("calculation board2.png")
         self.normal0 = pygame.image.load("0b.png")
         self.normal1 = pygame.image.load("1b.png")
         self.normal2 = pygame.image.load("2b.png")
         self.normal3 = pygame.image.load("3b.png")
-        self.calculation_board = pygame.image.load("calculation board2.png")
-        self.background = pygame.image.load("background.png")
-        self.background1 = pygame.image.load("blue stars.png")
-        self.background2 = pygame.image.load("Cubes.png")
-        self.background3 = pygame.image.load("Green warp.png")
-        self.background4 = pygame.image.load("colors.png")
-        self.background6 = pygame.image.load("22.png")
-        self.background7 = pygame.image.load("grass3.png")
+        self.ball_on_cube = pygame.image.load("ball on cube2.png")
+        self.normal_cube_down2 = pygame.image.load("normal cube down2b.png")
 
     #Function that prints text when a player has won the game
     def won_the_game(self):
         #Prints: "you won!"
         print("you won!")
 
-    #Ideas
-    #Make a picture of the calculations?
-    #Or make display of the writing
-    #Kinda like in another game
-
-    #Function that in the future will help with the display of the games calculations 
+    #Function that in the future will help with the display of the game's calculations 
     def showing_calculations(self):
         pass
-        #print(self.calculations[randint(0,8)])
-        #self.display.blit(self.normal_cube_down, (100, 75))
 
-    #NB
-    #Edit the code so function called right_cubes is more usefull
-
-    #Function that helps in the selection of the right cubes
+    #Function that in the fututre will help in the selection of the right cubes
     def right_cubes(self):
-        #Initializing a list called self.all_cubes containing the numbers 0-10
-        self.all_cubes = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
-        #Initializing a dictionary called self.all_cubes2
-        self.all_cubes2 = {}
-
-        #Initializing a list called self.cube_choices that has numbers inside it
-        #These numbers are used to separate right numbers from the wrong ones
-        self.cube_choices = [0, 2, 1, 4, 7, 8, 10]
-
-        #Initializing a list called self.numbers_on_cubes
-        self.numbers_on_cubes = []
-
-        #Initializing a list called self.calculation_choices
-        self.calculation_choices = []
-
-        #Initializing a dictionary called self.cube_choices2
-        self.cube_choices2 = {}
-
-        #Initializing a list called self.numbers_on_cubes2
-        self.numbers_on_cubes2 = []
-
-        #Initializing a list called self.calculation_choices2
-        self.calculation_choices2 = []
-
-        #For loop that iterates through a list called self.all_cubes while initializing keys and values to a dictionary called self.all_cubes2
-        for cube in self.all_cubes:
-            #Initializing a key with the name of the iterate object from self.all_cubes 
-            #and the value of a random number 0 to 3 initialized with a method called randint which was imported from a module called random
-            self.all_cubes2[str(cube)] = randint(0,3)
-
-        #tänki vois tehä randomisti
-
-        #Initializing a list called self.numbers_on_cubes again with numbers from 0 to 3 inside it
-        #self.numbers_on_cubes = [0, 0, 2, 1, 1, 3, 2, 1, 2, 1, 0]
-
-        #For loop that iterates through a list called self.all_cubes2 while appending calculations randomly to a list called self.calculation_choices
-        for cube in self.all_cubes2:
-            #Several if sentences which will be chosen depending on the number of the iterate object from a list called self.all_cubes2
-            if self.all_cubes2[cube] == 0:
-                #Appending the first calculation to a list called self.calculation_choices
-                self.calculation_choices.append(self.calculations[0])
-            elif self.all_cubes2[cube] == 1:
-                #Appending a calculation to a list called self.calculation_choices depending on which index number will be chosen randomly with a method called randint
-                #In this case randint chooses randomly either 1 or 2 which will indicate the index number of a list called self.calculations
-                #The chosen calculation will be then appended to a list called self.calculation_choices
-                self.calculation_choices.append(self.calculations[randint(1,2)])
-            elif self.all_cubes2[cube] == 2:
-                self.calculation_choices.append(self.calculations[randint(3,5)])
-            elif self.all_cubes2[cube] == 3:
-                self.calculation_choices.append(self.calculations[randint(6,9)])
-
-        #Here are ideas to the randomizing of the selection of the correct cubes
-        #ja random
-        #cube_choices.append(randint(0,2))
-        #while True:
-            #cube_choices.append()
+        pass
 
     #Function that is responsible for making the squares work as intended
     def cubes(self):
-        #selvennä tätä o.O
 
         #Initializing a attribute called fontt that gets pygame font as its value
         #The chosen font is Arial and the chosen size is 50
@@ -305,9 +225,6 @@ class DontFall:
         #And the size of the shape is 220 X 80
         pygame.draw.rect(self.display, (0, 170, 50), (40, 89, 220, 80))
         self.display.blit(self.calculation_board, (40, 89))
-
-        #Initializing a dictionary called self.cube_info
-        self.cube_info = {}
 
         #Here we initialize the game's squares and make them work as intended
         #In a slightly lazy way the same code will be repeated several times
@@ -324,21 +241,21 @@ class DontFall:
 
         #If sentence that will be chosen if both attributes self.firstrow_1_on_cube_x and self.firstrow_1_on_cube_y return True
         if self.firstrow_1_on_cube_x and self.firstrow_1_on_cube_y:
-            #winning sound
+            #Winning sound that plays after player has made it to the final cube
             self.win.play()
             #If sentence that will be chosen if number 0 is in a list called self.cube_choices
             if 0 in self.cube_choices:
                 #Initializing attribute called self.firstrow_1 that gets a picture of a pushed down square and it's coordinates as its value
                 self.firstrow_1 = self.display.blit(self.normal_cube_down2, (300, 150))
-            #If sentence that will be chosen if number 0 is not in a list called self.cube_choices
+            #Else sentence that will be chosen if number 0 is not in a list called self.cube_choices
             else:
                 #Initializing attributes sel.x and self.y again this time with the number values of 313 and 563
+                #Thus making the playable character teleport to the starting cube
+                #This happends because player gets it's coordinates from self.x and self.y
                 self.x = 313
                 self.y = 563
         #If sentence that will be chosen if both attributes self.firstrow_1_on_cube_x and self.firstrow_1_on_cube_y return False
         else:
-            #Top
-
             #Initializing attribute called self.firstrow_1 that gets a picture of a square that is not pushed down and it's coordinates as its value
             if 0 in self.right_path:
 
@@ -360,8 +277,6 @@ class DontFall:
                     self.firstrow_1 = self.display.blit(self.normal2, (300, 150))
                 elif self.number0 == 3:
                     self.firstrow_1 = self.display.blit(self.normal3, (300, 150))
-        #Adding the firsth row to a dictionary called self.cube_info
-        self.cube_info["firstrow_1"] = (self.firstrow_1.y, self.firstrow_1.x)
 
         #Second row
         self.secondrow_1_on_cube_x = 200 >= self.x-self.ball_on_cube.get_width() and 200 <= self.x+self.ball_on_cube.get_width()
@@ -383,7 +298,6 @@ class DontFall:
                 self.y = 563
         else:
             self.sound_lock1 = False
-            #Fourth lowest
             if 1 in self.right_path:
                 if self.chosen_answers[1] == 0:
                     self.secondrow_1 = self.display.blit(self.normal0, (200, 250))
@@ -478,10 +392,6 @@ class DontFall:
                     self.secondrow_3 = self.display.blit(self.normal2, (400, 250))
                 elif self.number3 == 3:
                     self.secondrow_3 = self.display.blit(self.normal3, (400, 250))
-        #Adding the second row to a dictionary called self.cube_info
-        self.cube_info["secondrow_1"] = (self.secondrow_1.y, self.secondrow_1.x)
-        self.cube_info["secondrow_2"] = (self.secondrow_2.y, self.secondrow_2.x)
-        self.cube_info["secondrow_3"] = (self.secondrow_3.y, self.secondrow_3.x)
 
         #Third row
         self.thirdrow_1_on_cube_x = 200 >= self.x-self.ball_on_cube.get_width() and 200 <= self.x+self.ball_on_cube.get_width()
@@ -502,7 +412,6 @@ class DontFall:
                 self.x = 313
                 self.y = 563
         else:
-            #Third lowest
             self.sound_lock4 = False
             if 4 in self.right_path:
                 if self.chosen_answers[4] == 0:
@@ -599,11 +508,6 @@ class DontFall:
                 elif self.number6 == 3:
                     self.thirdrow_3 = self.display.blit(self.normal3, (400, 350))
 
-        #Adding the third row to a dictionary called self.cube_info
-        self.cube_info["thirdrow_1"] = (self.thirdrow_1.y, self.thirdrow_1.x)
-        self.cube_info["thirdrow_2"] = (self.thirdrow_2.y, self.thirdrow_2.x)
-        self.cube_info["thirdrow_3"] = (self.thirdrow_3.y, self.thirdrow_3.x)
-
         #Fourth row
         self.fourthrow_1_on_cube_x = 200 >= self.x-self.ball_on_cube.get_width() and 200 <= self.x+self.ball_on_cube.get_width()
         self.fourthrow_1_on_cube_y = 450 >= self.y-self.ball_on_cube.get_height() and 450 <= self.y+self.ball_on_cube.get_height()
@@ -623,7 +527,6 @@ class DontFall:
                 self.x = 313
                 self.y = 563
         else:
-            #Second lowest
             self.sound_lock7 = False
             if 7 in self.right_path:
                 if self.chosen_answers[7] == 0:
@@ -661,7 +564,6 @@ class DontFall:
                     self.sound_lock8 = True
                 self.x = 313
                 self.y = 563
-
         else:
             self.sound_lock8 = False
             if 8 in self.right_path:
@@ -720,22 +622,13 @@ class DontFall:
                     self.fourthrow_3 = self.display.blit(self.normal2, (400, 450))
                 elif self.number9 == 3:
                     self.fourthrow_3 = self.display.blit(self.normal3, (400, 450))
-        #Adding the fourth row to a dictionary called self.cube_info
-        self.cube_info["fourthrow_1"] = (self.fourthrow_1.y, self.fourthrow_1.x)
-        self.cube_info["fourthrow_2"] = (self.fourthrow_2.y, self.fourthrow_2.x)
-        self.cube_info["fourthrow_3"] = (self.fourthrow_3.y, self.fourthrow_3.x)
 
         #Fifth row
         self.fifthrow_1_on_cube_x = 300 >= self.x-self.ball_on_cube.get_width() and 300 <= self.x+self.ball_on_cube.get_width()
         self.fifthrow_1_on_cube_y = 550 >= self.y-self.ball_on_cube.get_height() and 550 <= self.y+self.ball_on_cube.get_height()
 
-        # ok make necessary adjustments in the init funktion
-        # random doesnt work here
         if self.fifthrow_1_on_cube_x and self.fifthrow_1_on_cube_y:
 
-            #delete unnecessary
-            #print(self.chosen_answers[self.right_path[self.chosen_answers[10]]])
-            #text2 = fontt.render(f"{self.chosen_calculations[10]}", True, (100, 40, 0))
             if self.sound_lock10 == False:
                     self.creak.play()
                     self.sound_lock10 = True
@@ -745,7 +638,6 @@ class DontFall:
 
             self.fifthrow_1 = self.display.blit(self.normal_cube_down2, (300, 550))
         else:
-            #Lowest
             self.sound_lock10 = False
             if self.chosen_answers[10] == 0:
                 self.fifthrow_1 = self.display.blit(self.normal0, (300, 550))
@@ -756,11 +648,9 @@ class DontFall:
             elif self.chosen_answers[10] == 3:
                 self.fifthrow_1 = self.display.blit(self.normal3, (300, 550))
 
-        #Adding the fifth row to a dictionary called self.cube_info
-        self.cube_info["fifthrow_1"] = (self.fifthrow_1.y, self.fifthrow_1.x)
-
     #Function that in the future will help with the movement of the character
-    #def character(self):
+    def character(self):
+        pass
 
     #Function that loops over and over
     #Thus making the game flow
@@ -791,8 +681,6 @@ class DontFall:
 
     #Function that is mostly responsible for the way the character is moving
     def analyse_events(self):
-        #Accessing a funktion that in the future will help with the movement of the character
-        #self.character()
 
         #For loop that iterates over event queue
         for event in pygame.event.get():
@@ -852,6 +740,7 @@ class DontFall:
                         self.y -= 100
                         #Causes the player's movement to be locked thus making the player only move 1 block with one key press
                         self.locked = True
+
             #Here are still some problems
             elif self.y == 263:
                 if self.x < 313:
