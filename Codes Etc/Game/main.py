@@ -12,9 +12,9 @@ class DontFall:
         self.download_pictures()
 
         #Initializing sounds that will be used in the game
-        self.creak = pygame.mixer.Sound('creak2.wav')
-        self.fall = pygame.mixer.Sound('fall.wav')
-        self.win = pygame.mixer.Sound('win.wav')
+        self.creak = pygame.mixer.Sound('thud1.wav')
+        self.fall = pygame.mixer.Sound('Tiny Bombs Rack.wav')
+        self.win = pygame.mixer.Sound('won.wav')
 
         #Initializing music that will be played in the background
         self.music = pygame.mixer.music.load('d10.wav')
@@ -244,7 +244,7 @@ class DontFall:
             #Winning sound that plays after player has made it to the final cube
             self.win.play()
             #If sentence that will be chosen if number 0 is in a list called self.cube_choices
-            if 0 in self.cube_choices:
+            if 0 in self.right_path:
                 #Initializing attribute called self.firstrow_1 that gets a picture of a pushed down square and it's coordinates as its value
                 self.firstrow_1 = self.display.blit(self.normal_cube_down2, (300, 150))
             #Else sentence that will be chosen if number 0 is not in a list called self.cube_choices
@@ -824,8 +824,12 @@ class DontFall:
                         if self.up:
                             self.y -= 100
                             self.locked = True
+
+            #Edit this or shorter winning sound
             elif self.y == 163:
-                self.done = True
+                for i in range(100000000):
+                    if i == 90000000:
+                        self.done = True
             else:
                 if self.x < 413:
                     if self.right:
