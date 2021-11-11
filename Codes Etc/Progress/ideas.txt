@@ -37,3 +37,7 @@ ongelmat
 > äänet soi kokoajan jos seisoo ruudun päällä
 -> joku lukko tai sitten niin pitkä ääni ettei haittaa ja sitten pitäisi miettiä miten ääniä voi toistaa nopeasti eli esimerkiksi pelaajan poistuessa ruudulta ääni voisi katketa
 tai aloittaa hiljaisen äänen?
+
+11.11.2021
+Ei enää ongelmia.
+Jäljellä vain parannettavaa
