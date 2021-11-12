@@ -824,11 +824,10 @@ class DontFall:
                         if self.up:
                             self.y -= 100
                             self.locked = True
-
-            #Edit this or shorter winning sound
+            #When the player is at the final cube countdown starts so the winning starts has enough time to play
             elif self.y == 163:
-                for i in range(100000000):
-                    if i == 90000000:
+                for i in range(70999999):
+                    if i == 70999998:
                         self.done = True
             else:
                 if self.x < 413:
