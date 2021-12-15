@@ -13,11 +13,11 @@ class DontFall:
 
         #Initializing sounds that will be used in the game
         self.creak = pygame.mixer.Sound('thud1.wav')
-        self.fall = pygame.mixer.Sound('Tiny Bombs Rack.wav')
+        self.fall = pygame.mixer.Sound('falling.wav')
         self.win = pygame.mixer.Sound('won.wav')
 
         #Initializing music that will be played in the background
-        self.music = pygame.mixer.music.load('d10.wav')
+        self.music = pygame.mixer.music.load('music.wav')
         #Looping the music so it starts over and over
         pygame.mixer.music.play(loops=-1)
 
@@ -190,14 +190,14 @@ class DontFall:
     def download_pictures(self):
 
         #Downloading picture one by one while initializing variables that we can later access with the pictures as value
-        self.background7 = pygame.image.load("background2.png")
-        self.calculation_board = pygame.image.load("calculation board2.png")
-        self.normal0 = pygame.image.load("0b.png")
-        self.normal1 = pygame.image.load("1b.png")
-        self.normal2 = pygame.image.load("2b.png")
-        self.normal3 = pygame.image.load("3b.png")
-        self.ball_on_cube = pygame.image.load("ball on cube2.png")
-        self.normal_cube_down2 = pygame.image.load("normal cube down2b.png")
+        self.background = pygame.image.load("background.png")
+        self.calculation_board = pygame.image.load("calculation_board2.png")
+        self.normal0 = pygame.image.load("normal_wooden_slab0.png")
+        self.normal1 = pygame.image.load("normal_wooden_slab1.png")
+        self.normal2 = pygame.image.load("normal_wooden_slab2.png")
+        self.normal3 = pygame.image.load("normal_wooden_slab3.png")
+        self.ball_on_wooden_slab = pygame.image.load("ball_on_wooden_slab.png")
+        self.wooden_slab_down = pygame.image.load("wooden_slab_down.png")
 
     #Function that prints text when a player has won the game
     def won_the_game(self):
@@ -854,7 +854,7 @@ class DontFall:
         self.display.fill((0,100,100))
 
         #Filling the display with a picture of stars
-        self.display.blit(self.background7, (0, 0))
+        self.display.blit(self.background, (0, 0))
 
         #Accessing function that is responsible for making the squares work as intended
         self.cubes()
