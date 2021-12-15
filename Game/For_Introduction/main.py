@@ -191,7 +191,7 @@ class DontFall:
 
         #Downloading picture one by one while initializing variables that we can later access with the pictures as value
         self.background = pygame.image.load("background.png")
-        self.calculation_board = pygame.image.load("calculation_board2.png")
+        self.calculation_board = pygame.image.load("calculation_board.png")
         self.normal0 = pygame.image.load("normal_wooden_slab0.png")
         self.normal1 = pygame.image.load("normal_wooden_slab1.png")
         self.normal2 = pygame.image.load("normal_wooden_slab2.png")
@@ -236,8 +236,8 @@ class DontFall:
         #Initializing two attributes called self.firstrow_1_on_cube_x and self.firstrow_1_on_cube_y
         #These attributes are booleans and they return truth values based on the coordinates of the playable character and the game's squares
         #If the playable character on this instance is on the first square as in the top square these attributes return True
-        self.firstrow_1_on_cube_x = 300 >= self.x-self.ball_on_cube.get_width() and 300 <= self.x+self.ball_on_cube.get_width()
-        self.firstrow_1_on_cube_y = 150 >= self.y-self.ball_on_cube.get_height() and 150 <= self.y+self.ball_on_cube.get_height()
+        self.firstrow_1_on_cube_x = 300 >= self.x-self.ball_on_wooden_slab.get_width() and 300 <= self.x+self.ball_on_wooden_slab.get_width()
+        self.firstrow_1_on_cube_y = 150 >= self.y-self.ball_on_wooden_slab.get_height() and 150 <= self.y+self.ball_on_wooden_slab.get_height()
 
         #If sentence that will be chosen if both attributes self.firstrow_1_on_cube_x and self.firstrow_1_on_cube_y return True
         if self.firstrow_1_on_cube_x and self.firstrow_1_on_cube_y:
@@ -246,7 +246,7 @@ class DontFall:
             #If sentence that will be chosen if number 0 is in a list called self.cube_choices
             if 0 in self.right_path:
                 #Initializing attribute called self.firstrow_1 that gets a picture of a pushed down square and it's coordinates as its value
-                self.firstrow_1 = self.display.blit(self.normal_cube_down2, (300, 150))
+                self.firstrow_1 = self.display.blit(self.wooden_slab_down, (300, 150))
             #Else sentence that will be chosen if number 0 is not in a list called self.cube_choices
             else:
                 #Initializing attributes sel.x and self.y again this time with the number values of 313 and 563
@@ -279,8 +279,8 @@ class DontFall:
                     self.firstrow_1 = self.display.blit(self.normal3, (300, 150))
 
         #Second row
-        self.secondrow_1_on_cube_x = 200 >= self.x-self.ball_on_cube.get_width() and 200 <= self.x+self.ball_on_cube.get_width()
-        self.secondrow_1_on_cube_y = 250 >= self.y-self.ball_on_cube.get_height() and 250 <= self.y+self.ball_on_cube.get_height()
+        self.secondrow_1_on_cube_x = 200 >= self.x-self.ball_on_wooden_slab.get_width() and 200 <= self.x+self.ball_on_wooden_slab.get_width()
+        self.secondrow_1_on_cube_y = 250 >= self.y-self.ball_on_wooden_slab.get_height() and 250 <= self.y+self.ball_on_wooden_slab.get_height()
 
         if self.secondrow_1_on_cube_x and self.secondrow_1_on_cube_y:
             if 1 in self.right_path:
@@ -289,7 +289,7 @@ class DontFall:
                     self.sound_lock1 = True
                 text = fontt.render(f"{self.chosen_calculations[1]}", True, (255, 255, 255))
                 self.display.blit(text, (50, 100))
-                self.secondrow_1 = self.display.blit(self.normal_cube_down2, (200, 250))
+                self.secondrow_1 = self.display.blit(self.wooden_slab_down, (200, 250))
             else:
                 if self.sound_lock1 == False:
                     self.fall.play()
@@ -317,8 +317,8 @@ class DontFall:
                 elif self.number1 == 3:
                     self.secondrow_1 = self.display.blit(self.normal3, (200, 250))
 
-        self.secondrow_2_on_cube_x = 300 >= self.x-self.ball_on_cube.get_width() and 300 <= self.x+self.ball_on_cube.get_width()
-        self.secondrow_2_on_cube_y = 250 >= self.y-self.ball_on_cube.get_height() and 250 <= self.y+self.ball_on_cube.get_height()
+        self.secondrow_2_on_cube_x = 300 >= self.x-self.ball_on_wooden_slab.get_width() and 300 <= self.x+self.ball_on_wooden_slab.get_width()
+        self.secondrow_2_on_cube_y = 250 >= self.y-self.ball_on_wooden_slab.get_height() and 250 <= self.y+self.ball_on_wooden_slab.get_height()
 
         if self.secondrow_2_on_cube_x and self.secondrow_2_on_cube_y:
             if 2 in self.right_path:
@@ -327,7 +327,7 @@ class DontFall:
                     self.sound_lock2 = True
                 text = fontt.render(f"{self.chosen_calculations[2]}", True, (255, 255, 255))
                 self.display.blit(text, (50, 100))
-                self.secondrow_2 = self.display.blit(self.normal_cube_down2, (300, 250))
+                self.secondrow_2 = self.display.blit(self.wooden_slab_down, (300, 250))
             else:
                 if self.sound_lock2 == False:
                     self.fall.play()
@@ -355,8 +355,8 @@ class DontFall:
                 elif self.number2 == 3:
                     self.secondrow_2 = self.display.blit(self.normal3, (300, 250))
 
-        self.secondrow_3_on_cube_x = 400 >= self.x-self.ball_on_cube.get_width() and 400 <= self.x+self.ball_on_cube.get_width()
-        self.secondrow_3_on_cube_y = 250 >= self.y-self.ball_on_cube.get_height() and 250 <= self.y+self.ball_on_cube.get_height()
+        self.secondrow_3_on_cube_x = 400 >= self.x-self.ball_on_wooden_slab.get_width() and 400 <= self.x+self.ball_on_wooden_slab.get_width()
+        self.secondrow_3_on_cube_y = 250 >= self.y-self.ball_on_wooden_slab.get_height() and 250 <= self.y+self.ball_on_wooden_slab.get_height()
 
         if self.secondrow_3_on_cube_x and self.secondrow_3_on_cube_y:
             if 3 in self.right_path:
@@ -365,7 +365,7 @@ class DontFall:
                     self.sound_lock3 = True
                 text = fontt.render(f"{self.chosen_calculations[3]}", True, (255, 255, 255))
                 self.display.blit(text, (50, 100))
-                self.secondrow_3 = self.display.blit(self.normal_cube_down2, (400, 250))
+                self.secondrow_3 = self.display.blit(self.wooden_slab_down, (400, 250))
             else:
                 if self.sound_lock3 == False:
                     self.fall.play()
@@ -394,8 +394,8 @@ class DontFall:
                     self.secondrow_3 = self.display.blit(self.normal3, (400, 250))
 
         #Third row
-        self.thirdrow_1_on_cube_x = 200 >= self.x-self.ball_on_cube.get_width() and 200 <= self.x+self.ball_on_cube.get_width()
-        self.thirdrow_1_on_cube_y = 350 >= self.y-self.ball_on_cube.get_height() and 350 <= self.y+self.ball_on_cube.get_height()
+        self.thirdrow_1_on_cube_x = 200 >= self.x-self.ball_on_wooden_slab.get_width() and 200 <= self.x+self.ball_on_wooden_slab.get_width()
+        self.thirdrow_1_on_cube_y = 350 >= self.y-self.ball_on_wooden_slab.get_height() and 350 <= self.y+self.ball_on_wooden_slab.get_height()
 
         if self.thirdrow_1_on_cube_x and self.thirdrow_1_on_cube_y:
             if 4 in self.right_path:
@@ -404,7 +404,7 @@ class DontFall:
                     self.sound_lock4 = True
                 text = fontt.render(f"{self.chosen_calculations[4]}", True, (255, 255, 255))
                 self.display.blit(text, (50, 100))
-                self.thirdrow_1 = self.display.blit(self.normal_cube_down2, (200, 350))
+                self.thirdrow_1 = self.display.blit(self.wooden_slab_down, (200, 350))
             else:
                 if self.sound_lock4 == False:
                     self.fall.play()
@@ -432,8 +432,8 @@ class DontFall:
                 elif self.number4 == 3:
                     self.thirdrow_1 = self.display.blit(self.normal3, (200, 350))
 
-        self.thirdrow_2_on_cube_x = 300 >= self.x-self.ball_on_cube.get_width() and 300 <= self.x+self.ball_on_cube.get_width()
-        self.thirdrow_2_on_cube_y = 350 >= self.y-self.ball_on_cube.get_height() and 350 <= self.y+self.ball_on_cube.get_height()
+        self.thirdrow_2_on_cube_x = 300 >= self.x-self.ball_on_wooden_slab.get_width() and 300 <= self.x+self.ball_on_wooden_slab.get_width()
+        self.thirdrow_2_on_cube_y = 350 >= self.y-self.ball_on_wooden_slab.get_height() and 350 <= self.y+self.ball_on_wooden_slab.get_height()
 
         if self.thirdrow_2_on_cube_x and self.thirdrow_2_on_cube_y:
             if 5 in self.right_path:
@@ -442,7 +442,7 @@ class DontFall:
                     self.sound_lock5 = True
                 text = fontt.render(f"{self.chosen_calculations[5]}", True, (255, 255, 255))
                 self.display.blit(text, (50, 100))
-                self.thirdrow_2 = self.display.blit(self.normal_cube_down2, (300, 350))
+                self.thirdrow_2 = self.display.blit(self.wooden_slab_down, (300, 350))
             else:
                 if self.sound_lock5 == False:
                     self.fall.play()
@@ -470,8 +470,8 @@ class DontFall:
                 elif self.number5 == 3:
                     self.thirdrow_2 = self.display.blit(self.normal3, (300, 350))
 
-        self.thirdrow_3_on_cube_x = 400 >= self.x-self.ball_on_cube.get_width() and 400 <= self.x+self.ball_on_cube.get_width()
-        self.thirdrow_3_on_cube_y = 350 >= self.y-self.ball_on_cube.get_height() and 350 <= self.y+self.ball_on_cube.get_height()
+        self.thirdrow_3_on_cube_x = 400 >= self.x-self.ball_on_wooden_slab.get_width() and 400 <= self.x+self.ball_on_wooden_slab.get_width()
+        self.thirdrow_3_on_cube_y = 350 >= self.y-self.ball_on_wooden_slab.get_height() and 350 <= self.y+self.ball_on_wooden_slab.get_height()
 
         if self.thirdrow_3_on_cube_x and self.thirdrow_3_on_cube_y:
             if 6 in self.right_path:
@@ -480,7 +480,7 @@ class DontFall:
                     self.sound_lock6 = True
                 text = fontt.render(f"{self.chosen_calculations[6]}", True, (255, 255, 255))
                 self.display.blit(text, (50, 100))
-                self.thirdrow_3 = self.display.blit(self.normal_cube_down2, (400, 350))
+                self.thirdrow_3 = self.display.blit(self.wooden_slab_down, (400, 350))
             else:
                 if self.sound_lock6 == False:
                     self.fall.play()
@@ -509,8 +509,8 @@ class DontFall:
                     self.thirdrow_3 = self.display.blit(self.normal3, (400, 350))
 
         #Fourth row
-        self.fourthrow_1_on_cube_x = 200 >= self.x-self.ball_on_cube.get_width() and 200 <= self.x+self.ball_on_cube.get_width()
-        self.fourthrow_1_on_cube_y = 450 >= self.y-self.ball_on_cube.get_height() and 450 <= self.y+self.ball_on_cube.get_height()
+        self.fourthrow_1_on_cube_x = 200 >= self.x-self.ball_on_wooden_slab.get_width() and 200 <= self.x+self.ball_on_wooden_slab.get_width()
+        self.fourthrow_1_on_cube_y = 450 >= self.y-self.ball_on_wooden_slab.get_height() and 450 <= self.y+self.ball_on_wooden_slab.get_height()
 
         if self.fourthrow_1_on_cube_x and self.fourthrow_1_on_cube_y:
             if 7 in self.right_path:
@@ -519,7 +519,7 @@ class DontFall:
                     self.sound_lock7 = True
                 text = fontt.render(f"{self.chosen_calculations[7]}", True, (255, 255, 255))
                 self.display.blit(text, (50, 100))
-                self.fourthrow_1 = self.display.blit(self.normal_cube_down2, (200, 450))
+                self.fourthrow_1 = self.display.blit(self.wooden_slab_down, (200, 450))
             else:
                 if self.sound_lock7 == False:
                     self.fall.play()
@@ -547,8 +547,8 @@ class DontFall:
                 elif self.number7 == 3:
                     self.fourthrow_1 = self.display.blit(self.normal3, (200, 450))
 
-        self.fourthrow_2_on_cube_x = 300 >= self.x-self.ball_on_cube.get_width() and 300 <= self.x+self.ball_on_cube.get_width()
-        self.fourthrow_2_on_cube_y = 450 >= self.y-self.ball_on_cube.get_height() and 450 <= self.y+self.ball_on_cube.get_height()
+        self.fourthrow_2_on_cube_x = 300 >= self.x-self.ball_on_wooden_slab.get_width() and 300 <= self.x+self.ball_on_wooden_slab.get_width()
+        self.fourthrow_2_on_cube_y = 450 >= self.y-self.ball_on_wooden_slab.get_height() and 450 <= self.y+self.ball_on_wooden_slab.get_height()
 
         if self.fourthrow_2_on_cube_x and self.fourthrow_2_on_cube_y:
             if 8 in self.right_path:
@@ -557,7 +557,7 @@ class DontFall:
                     self.sound_lock8 = True
                 text = fontt.render(f"{self.chosen_calculations[8]}", True, (255, 255, 255))
                 self.display.blit(text, (50, 100))
-                self.fourthrow_2 = self.display.blit(self.normal_cube_down2, (300, 450))
+                self.fourthrow_2 = self.display.blit(self.wooden_slab_down, (300, 450))
             else:
                 if self.sound_lock8 == False:
                     self.fall.play()
@@ -584,15 +584,15 @@ class DontFall:
                     self.fourthrow_2 = self.display.blit(self.normal2, (300, 450))
                 elif self.number8 == 3:
                     self.fourthrow_2 = self.display.blit(self.normal3, (300, 450))
-        self.fourthrow_3_on_cube_x = 400 >= self.x-self.ball_on_cube.get_width() and 400 <= self.x+self.ball_on_cube.get_width()
-        self.fourthrow_3_on_cube_y = 450 >= self.y-self.ball_on_cube.get_height() and 450 <= self.y+self.ball_on_cube.get_height()
+        self.fourthrow_3_on_cube_x = 400 >= self.x-self.ball_on_wooden_slab.get_width() and 400 <= self.x+self.ball_on_wooden_slab.get_width()
+        self.fourthrow_3_on_cube_y = 450 >= self.y-self.ball_on_wooden_slab.get_height() and 450 <= self.y+self.ball_on_wooden_slab.get_height()
 
         if self.fourthrow_3_on_cube_x and self.fourthrow_3_on_cube_y:
             
             if 9 in self.right_path:
                 text = fontt.render(f"{self.chosen_calculations[9]}", True, (255, 255, 255))
                 self.display.blit(text, (50, 100))
-                self.fourthrow_3 = self.display.blit(self.normal_cube_down2, (400, 450))
+                self.fourthrow_3 = self.display.blit(self.wooden_slab_down, (400, 450))
                 if self.sound_lock9 == False:
                     self.creak.play()
                     self.sound_lock9 = True
@@ -624,8 +624,8 @@ class DontFall:
                     self.fourthrow_3 = self.display.blit(self.normal3, (400, 450))
 
         #Fifth row
-        self.fifthrow_1_on_cube_x = 300 >= self.x-self.ball_on_cube.get_width() and 300 <= self.x+self.ball_on_cube.get_width()
-        self.fifthrow_1_on_cube_y = 550 >= self.y-self.ball_on_cube.get_height() and 550 <= self.y+self.ball_on_cube.get_height()
+        self.fifthrow_1_on_cube_x = 300 >= self.x-self.ball_on_wooden_slab.get_width() and 300 <= self.x+self.ball_on_wooden_slab.get_width()
+        self.fifthrow_1_on_cube_y = 550 >= self.y-self.ball_on_wooden_slab.get_height() and 550 <= self.y+self.ball_on_wooden_slab.get_height()
 
         if self.fifthrow_1_on_cube_x and self.fifthrow_1_on_cube_y:
 
@@ -636,7 +636,7 @@ class DontFall:
             text = fontt.render(f"{self.chosen_calculations[10]}", True, (255, 255, 255))
             self.display.blit(text, (50, 100))
 
-            self.fifthrow_1 = self.display.blit(self.normal_cube_down2, (300, 550))
+            self.fifthrow_1 = self.display.blit(self.wooden_slab_down, (300, 550))
         else:
             self.sound_lock10 = False
             if self.chosen_answers[10] == 0:
@@ -867,7 +867,7 @@ class DontFall:
 
         #Draws a picture to the surface of the game
         #The coordinations of the shape are whatever self.x and self.y happen to be
-        self.display.blit(self.ball_on_cube, (self.x, self.y))
+        self.display.blit(self.ball_on_wooden_slab, (self.x, self.y))
  
         #Allows only a portion of the screen to updated, instead of the entire area
         #If no argument is passed it updates the entire surface area
