@@ -16,3 +16,8 @@ Boris Hiltunen ([BorisHiltunen](https://github.com/BorisHiltunen))
 
 ## Customization
 
+## Demonstration
+
+<p align="center">
+  <img src="https://github.com/BorisHiltunen/Don-t-Fall/raw/main/picture_of_the_game.png"/>
+</p>
