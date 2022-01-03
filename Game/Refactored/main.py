@@ -1,8 +1,13 @@
-#Importing necessary modules or methods
+"""main.py: Contains DontFall class."""
 import pygame
 from random import randint
 
+
 class DontFall:
+    """
+    Class that contains necessary functions
+    to make DontFall app work as intended.
+    """
 
     def __init__(self):
         pygame.init()
@@ -74,7 +79,7 @@ class DontFall:
                 break
             if self.right_path[len(self.right_path)-1] == 1:
                 self.right_path.append(2)
-        
+
         self.right_path.append(0)
 
         self.chosen_answers = {}
@@ -133,15 +138,15 @@ class DontFall:
 
         self.x = 313
         self.y = 563
- 
+
         self.display = pygame.display.set_mode((self.width, self.height))
- 
+
         pygame.display.set_caption("Don't Fall")
- 
+
         self.loop()
 
-    #Function that downloads pictures
     def download_pictures(self):
+        """Function that downloads pictures."""
 
         self.background = pygame.image.load("background.png")
         self.calculation_board = pygame.image.load("calculation_board.png")
@@ -153,9 +158,15 @@ class DontFall:
         self.wooden_slab_down = pygame.image.load("wooden_slab_down.png")
 
     def won_the_game(self):
+        """Function that prints that you won the game if you did."""
+
         print("you won!")
 
     def cubes(self):
+        """
+        Function that is responsibe
+        for making the cubes work as intended.
+        """
 
         fontt = pygame.font.SysFont("Arial", 50)
 
@@ -503,7 +514,7 @@ class DontFall:
         self.fourthrow_3_on_cube_y = 450 >= self.y-self.ball_on_wooden_slab.get_height() and 450 <= self.y+self.ball_on_wooden_slab.get_height()
 
         if self.fourthrow_3_on_cube_x and self.fourthrow_3_on_cube_y:
-            
+
             if 9 in self.right_path:
                 text = fontt.render(f"{self.chosen_calculations[9]}", True, (255, 255, 255))
                 self.display.blit(text, (50, 100))
@@ -545,8 +556,8 @@ class DontFall:
         if self.fifthrow_1_on_cube_x and self.fifthrow_1_on_cube_y:
 
             if self.sound_lock10 == False:
-                    self.creak.play()
-                    self.sound_lock10 = True
+                self.creak.play()
+                self.sound_lock10 = True
 
             text = fontt.render(f"{self.chosen_calculations[10]}", True, (255, 255, 255))
             self.display.blit(text, (50, 100))
@@ -563,9 +574,11 @@ class DontFall:
             elif self.chosen_answers[10] == 3:
                 self.fifthrow_1 = self.display.blit(self.normal3, (300, 550))
 
-    #Function that loops over and over
-    #Thus making the game flow
     def loop(self):
+        """
+        Function that loops over and over
+        Thus making the game flow.
+        """
 
         clock = pygame.time.Clock()
 
@@ -580,8 +593,11 @@ class DontFall:
                 self.won_the_game()
                 break
 
-    #Function that is mostly responsible for the way the character is moving
     def analyse_events(self):
+        """
+        Function that is mostly responsible
+        for the way the character is moving.
+        """
 
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
@@ -593,7 +609,7 @@ class DontFall:
                     self.up = True
                 if event.key == pygame.K_DOWN:
                     self.down = True
- 
+
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT:
                     self.left = False
@@ -731,9 +747,9 @@ class DontFall:
                         self.y -= 100
                         self.locked = True
 
-    #Function that basically draws the game
     def draw_the_game(self):
- 
+        """Function that basically draws the game."""
+
         self.display.fill((0,100,100))
 
         self.display.blit(self.background, (0, 0))
@@ -741,9 +757,8 @@ class DontFall:
         self.cubes()
 
         self.display.blit(self.ball_on_wooden_slab, (self.x, self.y))
- 
+
         pygame.display.flip()
 
-#Used to execute code if the file is run directly
 if __name__ == "__main__":
     DontFall()
