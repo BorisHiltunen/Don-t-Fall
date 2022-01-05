@@ -8,7 +8,7 @@ Boris Hiltunen ([BorisHiltunen](https://github.com/BorisHiltunen))
 
 ## Tools and Libraries
 - [Pygame](https://www.pygame.org/docs/)
-- You can find required packets from Requirements.txt
+- You can find required packets from requirements.txt
 
 ## Setup
 - Clone or fork the repository.
